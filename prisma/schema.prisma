@@ -1,0 +1,184 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum PublishStatus {
+  DRAFT
+  PUBLISHED
+  ARCHIVED
+}
+
+enum LeadStatus {
+  NEW
+  CONTACTED
+  INTERESTED
+  QUOTE_SENT
+  FOLLOW_UP
+  BOOKED
+  LOST
+  SPAM
+}
+
+enum BookingStatus {
+  INQUIRY
+  QUOTE_SENT
+  ADVANCE_PENDING
+  CONFIRMED
+  COMPLETED
+  CANCELLED
+}
+
+model SiteSetting {
+  id             String   @id @default(cuid())
+  brandName      String   @default("Kashmir Vista Travels")
+  siteUrl        String   @default("https://example.com")
+  phone          String   @default("+91 98765 43210")
+  whatsapp       String   @default("+91 98765 43210")
+  email          String   @default("hello@example.com")
+  address        String   @default("Srinagar, Jammu and Kashmir, India")
+  socials        Json     @default("{}")
+  defaultOgImage String   @default("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee")
+  schemaFields   Json     @default("{}")
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}
+
+model Package {
+  id              String        @id @default(cuid())
+  title           String
+  slug            String        @unique
+  seoTitle        String
+  metaDescription String
+  canonicalUrl    String?
+  ogImage         String?
+  indexable       Boolean       @default(true)
+  overview        String
+  destination     String        @default("Kashmir")
+  duration        String
+  price           Int
+  priceNote       String?
+  itinerary       Json          @default("[]")
+  inclusions      String[]      @default([])
+  exclusions      String[]      @default([])
+  hotels          String?
+  cabDetails      String?
+  images          Json          @default("[]")
+  faqs            Json          @default("[]")
+  reviews         Json          @default("[]")
+  schemaFields    Json          @default("{}")
+  relatedPackages String[]      @default([])
+  relatedBlogs    String[]      @default([])
+  status          PublishStatus @default(DRAFT)
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+  bookings        Booking[]
+}
+
+model BlogPost {
+  id              String        @id @default(cuid())
+  title           String
+  slug            String        @unique
+  seoTitle        String
+  metaDescription String
+  canonicalUrl    String?
+  ogImage         String?
+  indexable       Boolean       @default(true)
+  featuredImage   String?
+  author          String        @default("Kashmir Vista Editorial Team")
+  content         String
+  faqs            Json          @default("[]")
+  relatedPackages String[]      @default([])
+  internalLinks   Json          @default("[]")
+  status          PublishStatus @default(DRAFT)
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+}
+
+model ItineraryDownload {
+  id              String        @id @default(cuid())
+  title           String
+  slug            String        @unique
+  seoTitle        String
+  metaDescription String
+  canonicalUrl    String?
+  ogImage         String?
+  indexable       Boolean       @default(true)
+  destination     String        @default("Kashmir")
+  description     String
+  pdfUrl          String
+  leadFormCopy    String?
+  faqs            Json          @default("[]")
+  status          PublishStatus @default(DRAFT)
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+}
+
+model Lead {
+  id                String     @id @default(cuid())
+  name              String
+  phone             String
+  travelLocation    String?
+  numberOfPeople    Int?
+  travelDate        DateTime?
+  interestedPackage String?
+  sourcePage        String
+  utmSource         String?
+  utmMedium         String?
+  utmCampaign       String?
+  utmTerm           String?
+  utmContent        String?
+  referrer          String?
+  device            String?
+  leadType          String
+  status            LeadStatus @default(NEW)
+  notes             String?
+  createdAt         DateTime   @default(now())
+  updatedAt         DateTime   @updatedAt
+  bookings          Booking[]
+}
+
+model Booking {
+  id             String        @id @default(cuid())
+  leadId         String?
+  packageId      String?
+  customerName   String
+  phone          String
+  status         BookingStatus @default(INQUIRY)
+  travelDate     DateTime?
+  numberOfPeople Int?
+  quoteAmount    Int?
+  advanceAmount  Int?
+  balanceAmount  Int?
+  notes          String?
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+  lead           Lead?         @relation(fields: [leadId], references: [id], onDelete: SetNull)
+  package        Package?      @relation(fields: [packageId], references: [id], onDelete: SetNull)
+}
+
+model Redirect {
+  id         String   @id @default(cuid())
+  source    String   @unique
+  target    String
+  status    Int      @default(308)
+  active    Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model PageView {
+  id        String   @id @default(cuid())
+  path      String
+  referrer  String?
+  utmSource String?
+  utmMedium String?
+  utmCampaign String?
+  device    String?
+  userAgent String?
+  createdAt DateTime @default(now())
+}
