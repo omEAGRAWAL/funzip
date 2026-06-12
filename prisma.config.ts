@@ -3,12 +3,16 @@
 import "dotenv/config";
 import { defineConfig } from "prisma/config";
 
+const pooledUrl = process.env["DATABASE_URL"];
+const directUrl =
+  process.env["DIRECT_URL"] || pooledUrl?.replace("-pooler.", ".");
+
 export default defineConfig({
   schema: "prisma/schema.prisma",
   migrations: {
     path: "prisma/migrations",
   },
   datasource: {
-    url: process.env["DATABASE_URL"],
+    url: directUrl,
   },
 });

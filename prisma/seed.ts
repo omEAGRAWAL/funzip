@@ -1,10 +1,30 @@
+import "dotenv/config";
+
 import { Prisma, PrismaClient } from "../src/generated/prisma/client";
 import { PrismaPg } from "@prisma/adapter-pg";
 import { seedBlogs, seedItineraries, seedPackages } from "../src/lib/seed";
 
+function seedDatabaseUrl() {
+  const url = process.env.DATABASE_URL;
+  if (!url) return "";
+
+  try {
+    const parsed = new URL(url);
+    if (
+      parsed.hostname.endsWith(".neon.tech") &&
+      !parsed.hostname.includes("-pooler.")
+    ) {
+      parsed.hostname = parsed.hostname.replace(".", "-pooler.");
+    }
+    return parsed.toString();
+  } catch {
+    return url;
+  }
+}
+
 const prisma = new PrismaClient({
   adapter: new PrismaPg({
-    connectionString: process.env.DATABASE_URL!,
+    connectionString: seedDatabaseUrl(),
   }),
 });
 

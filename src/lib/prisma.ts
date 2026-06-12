@@ -10,11 +10,29 @@ export function isDatabaseConfigured() {
   return Boolean(url && !url.includes("johndoe:randompassword"));
 }
 
+function runtimeDatabaseUrl() {
+  const url = process.env.DATABASE_URL;
+  if (!url) return "";
+
+  try {
+    const parsed = new URL(url);
+    if (
+      parsed.hostname.endsWith(".neon.tech") &&
+      !parsed.hostname.includes("-pooler.")
+    ) {
+      parsed.hostname = parsed.hostname.replace(".", "-pooler.");
+    }
+    return parsed.toString();
+  } catch {
+    return url;
+  }
+}
+
 export function getPrisma() {
   if (!prisma) {
     prisma = new PrismaClient({
       adapter: new PrismaPg({
-        connectionString: process.env.DATABASE_URL!,
+        connectionString: runtimeDatabaseUrl(),
       }),
     });
   }
