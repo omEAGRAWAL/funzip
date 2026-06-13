@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Phone, Send } from "lucide-react";
+import { Menu, Phone, Search, Send } from "lucide-react";
 import { getSiteConfig, whatsappUrl } from "@/lib/config";
 
 const navItems = [
@@ -15,28 +15,39 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-40 border-b border-white/60 bg-surface/82 shadow-sm backdrop-blur-xl">
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 md:px-6">
-        <Link href="/" className="flex items-center gap-3 leading-tight">
-          <span className="grid h-10 w-10 place-items-center rounded-lg bg-brand text-sm font-black text-white shadow-sm">
-            {config.brandName.slice(0, 1)}
-          </span>
-          <span className="flex flex-col">
-            <span className="text-lg font-black tracking-normal text-brand-dark">
+      <div className="mx-auto grid max-w-7xl grid-cols-[44px_1fr_44px] items-center gap-3 px-5 py-4 md:grid-cols-[1fr_auto_1fr] md:px-6">
+        <div className="flex items-center gap-4">
+          <Link
+            href="/kashmir-tour-packages"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full text-brand transition hover:bg-surface-mid"
+            aria-label="View packages"
+          >
+            <Menu size={22} />
+          </Link>
+          <nav className="hidden items-center gap-5 text-sm font-semibold text-foreground/70 lg:flex">
+            {navItems.map((item) => (
+              <Link key={item.href} href={item.href} className="hover:text-brand">
+                {item.label}
+              </Link>
+            ))}
+          </nav>
+        </div>
+        <Link href="/" className="justify-self-center text-center leading-tight">
+          <span className="block text-2xl font-black tracking-normal text-brand">
             {config.brandName}
-            </span>
-            <span className="text-xs font-medium text-foreground/60">
-              Kashmir tours by local planners
-            </span>
+          </span>
+          <span className="hidden text-xs font-medium text-foreground/60 md:block">
+            Kashmir tours by local planners
           </span>
         </Link>
-        <nav className="hidden items-center gap-5 text-sm font-semibold text-foreground/70 lg:flex">
-          {navItems.map((item) => (
-            <Link key={item.href} href={item.href} className="hover:text-brand">
-              {item.label}
-            </Link>
-          ))}
-        </nav>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center justify-self-end gap-2">
+          <Link
+            href="/contact"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full text-brand transition hover:bg-surface-mid md:hidden"
+            aria-label="Search or contact"
+          >
+            <Search size={21} />
+          </Link>
           <Link
             href="/contact"
             className="hidden h-10 items-center rounded-md bg-accent px-4 text-sm font-black text-foreground shadow-sm md:inline-flex"

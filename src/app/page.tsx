@@ -38,48 +38,49 @@ export default async function Home() {
   const featured = packages.slice(0, 3);
   const heroImage = featured[1]?.images[0]?.url || config.defaultOgImage;
   const heroTrustItems = [
-    { label: "Local experts", icon: CheckCircle2 },
-    { label: "Best route timing", icon: CalendarDays },
-    { label: "Call and WhatsApp support", icon: MessageCircle },
+    { label: "Local Experts", icon: CheckCircle2 },
+    { label: "Best Price", icon: CalendarDays },
+    { label: "24/7 Support", icon: MessageCircle },
   ];
   const proofItems = [
-    { title: "Google", text: "4.8/5 rating", icon: Star, tone: "text-accent" },
+    { title: "Google", text: "4.8/5 Rating", icon: Star, tone: "text-brand" },
     {
-      title: "10k+ travellers",
-      text: "Families, couples, and groups",
-      icon: Users,
-      tone: "text-sky",
+      title: "Tripadvisor",
+      text: "4.7/5 Rating",
+      icon: MessageCircle,
+      tone: "text-secondary",
     },
     {
-      title: "Local support",
-      text: "Route, hotel, and cab help",
-      icon: ShieldCheck,
-      tone: "text-brand",
+      title: "10k+ travellers",
+      text: "Happy Customers",
+      icon: Users,
+      tone: "text-accent",
     },
   ];
 
   return (
     <PublicShell>
       <JsonLd data={organizationSchema()} />
-      <section className="relative min-h-[650px] overflow-hidden bg-brand-dark text-white">
+      <section className="relative flex min-h-[500px] items-end overflow-hidden bg-background px-5 pb-8 pt-24 text-foreground md:min-h-[620px] md:px-6 md:pb-14">
         <Image
           src={heroImage}
           alt="Kashmir valley travel package view"
           fill
           priority
           sizes="100vw"
-          className="object-cover opacity-55"
+          className="object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-brand-dark/55 to-brand-dark/20" />
-        <div className="relative mx-auto flex min-h-[650px] max-w-7xl flex-col justify-end px-4 pb-10 pt-24 md:px-6 md:pb-14">
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/42 to-transparent" />
+        <div className="relative z-10 mx-auto w-full max-w-7xl">
           <div className="max-w-4xl">
-            <p className="inline-flex items-center gap-2 rounded-full bg-white/16 px-3 py-1 text-sm font-bold text-white shadow-sm backdrop-blur">
+            <p className="inline-flex items-center gap-2 rounded-full bg-surface/65 px-3 py-1 text-sm font-bold text-brand shadow-sm backdrop-blur">
               <Sparkles size={16} /> Srinagar based Kashmir travel planners
             </p>
-            <h1 className="mt-5 max-w-4xl text-4xl font-black leading-tight tracking-normal md:text-6xl">
-              Explore Kashmir with trips planned around you
+            <h1 className="mt-5 max-w-4xl text-4xl font-black leading-tight tracking-normal text-foreground drop-shadow-sm md:text-6xl">
+              Explore Kashmir with <span className="text-brand">customized</span>{" "}
+              travel packages
             </h1>
-            <p className="mt-5 max-w-2xl text-lg leading-8 text-white/86">
+            <p className="mt-5 max-w-2xl text-base leading-7 text-foreground/72 drop-shadow-sm md:text-lg md:leading-8">
               Honeymoon, family, group, and snow holidays across Srinagar,
               Gulmarg, Pahalgam, Sonmarg, and Dal Lake with private cab guidance
               and local support.
@@ -87,22 +88,22 @@ export default async function Home() {
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Link
                 href="#trip-plan"
-                className="inline-flex h-12 items-center justify-center gap-2 rounded-md bg-accent px-5 text-sm font-black text-foreground shadow-lg shadow-black/15"
+                className="inline-flex h-14 w-full items-center justify-center gap-2 rounded-lg bg-accent px-5 text-sm font-black text-white shadow-lg shadow-accent/15 sm:w-auto"
               >
                 Get free trip plan <ArrowRight size={18} />
               </Link>
               <Link
                 href="/kashmir-tour-packages"
-                className="inline-flex h-12 items-center justify-center rounded-md border border-white/45 bg-white/10 px-5 text-sm font-black text-white backdrop-blur"
+                className="inline-flex h-14 w-full items-center justify-center rounded-lg border border-brand bg-surface/50 px-5 text-sm font-black text-brand backdrop-blur sm:w-auto"
               >
                 View packages
               </Link>
             </div>
           </div>
-          <div className="mt-8 grid gap-3 border-t border-white/20 pt-5 text-sm font-bold text-white/88 sm:grid-cols-3">
+          <div className="mt-6 flex justify-between gap-3 border-t border-line pt-4 text-xs font-black uppercase text-foreground/62 sm:max-w-2xl">
             {heroTrustItems.map(({ label, icon: Icon }) => (
-              <div key={label} className="flex items-center gap-2">
-                <Icon className="text-accent" size={18} />
+              <div key={label} className="flex items-center gap-1.5">
+                <Icon className="text-secondary" size={16} />
                 <span>{label}</span>
               </div>
             ))}
@@ -110,20 +111,20 @@ export default async function Home() {
         </div>
       </section>
 
-      <section className="border-b border-line bg-surface">
-        <div className="hide-scrollbar mx-auto flex max-w-7xl gap-4 overflow-x-auto px-4 py-6 md:grid md:grid-cols-3 md:px-6">
+      <section className="bg-background px-5 pt-16 md:px-6">
+        <div className="hide-scrollbar mx-auto flex max-w-7xl snap-x gap-4 overflow-x-auto pb-4">
           {proofItems.map(({ title, text, icon: Icon, tone }) => (
             <div
               key={title}
-              className="flex min-w-[230px] items-center gap-3 rounded-lg border border-line bg-snow p-4 shadow-sm"
+              className="flex min-w-[200px] snap-start items-center gap-3 rounded-lg border border-line bg-surface p-4 shadow-sm"
             >
               <Icon
                 className={`${tone} ${title === "Google" ? "fill-accent" : ""}`}
-                size={24}
+                size={23}
               />
               <div>
-                <h2 className="font-black text-brand-dark">{title}</h2>
-                <p className="mt-1 text-sm leading-6 text-foreground/65">
+                <h2 className="text-base font-black text-foreground">{title}</h2>
+                <p className="mt-1 text-xs font-black uppercase text-foreground/56">
                   {text}
                 </p>
               </div>
@@ -132,14 +133,15 @@ export default async function Home() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 py-14 md:px-6">
+      <section className="mx-auto max-w-7xl px-5 py-16 md:px-6">
         <div className="flex flex-col justify-between gap-4 md:flex-row md:items-end">
           <div>
             <p className="flex items-center gap-2 text-sm font-black uppercase text-brand">
               <MapPin size={17} /> Kashmir tour packages
             </p>
             <h2 className="mt-2 text-3xl font-black text-brand-dark md:text-4xl">
-              Popular packages for every Kashmir plan
+              Popular
+              <br className="md:hidden" /> packages
             </h2>
             <p className="mt-3 max-w-2xl leading-7 text-foreground/68">
               Choose a ready route or use it as a starting point for a custom

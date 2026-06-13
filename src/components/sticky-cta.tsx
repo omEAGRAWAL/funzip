@@ -5,20 +5,20 @@ export function StickyCta() {
   const config = getSiteConfig();
 
   return (
-    <div className="fixed inset-x-3 bottom-3 z-50 grid grid-cols-2 gap-2 rounded-lg border border-white/70 bg-white/88 p-2 shadow-2xl shadow-brand-dark/15 backdrop-blur-xl md:left-auto md:right-5 md:w-80">
+    <div className="pointer-events-none fixed inset-x-5 bottom-8 z-50 flex justify-between md:pointer-events-auto md:inset-x-auto md:bottom-3 md:right-5 md:grid md:w-80 md:grid-cols-2 md:gap-2 md:rounded-lg md:border md:border-white/70 md:bg-white/88 md:p-2 md:shadow-2xl md:shadow-brand-dark/15 md:backdrop-blur-xl">
       <a
         href={whatsappUrl("Hi, I want a Kashmir tour quote.")}
-        className="inline-flex h-11 items-center justify-center gap-2 rounded-md bg-brand text-sm font-bold text-white shadow-sm"
+        className="pointer-events-auto inline-flex h-14 w-14 items-center justify-center gap-2 rounded-full bg-secondary text-sm font-bold text-white shadow-xl transition hover:scale-105 md:h-11 md:w-auto md:rounded-md md:bg-brand md:shadow-sm"
       >
         <Send size={17} />
-        WhatsApp
+        <span className="sr-only md:not-sr-only">WhatsApp</span>
       </a>
       <a
         href={`tel:${config.phone}`}
-        className="inline-flex h-11 items-center justify-center gap-2 rounded-md bg-accent text-sm font-bold text-foreground shadow-sm"
+        className="pointer-events-auto inline-flex h-14 w-14 items-center justify-center gap-2 rounded-full bg-accent text-sm font-bold text-white shadow-xl transition hover:scale-105 md:h-11 md:w-auto md:rounded-md md:text-white md:shadow-sm"
       >
         <Phone size={17} />
-        Call
+        <span className="sr-only md:not-sr-only">Call</span>
       </a>
     </div>
   );

@@ -94,7 +94,7 @@ export default async function PackageDetailPage({ params }: Props) {
           { name: item.title, url: absoluteUrl(`/kashmir-tour-packages/${item.slug}`) },
         ])}
       />
-      <section className="relative overflow-hidden bg-brand-dark text-white">
+      <section className="relative flex min-h-[530px] items-end overflow-hidden bg-background text-foreground">
         {hero ? (
           <Image
             src={hero.url}
@@ -102,46 +102,46 @@ export default async function PackageDetailPage({ params }: Props) {
             fill
             priority
             sizes="100vw"
-            className="object-cover opacity-48"
+            className="object-cover"
           />
         ) : null}
-        <div className="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/72 to-brand-dark/25" />
-        <div className="relative mx-auto max-w-7xl px-4 py-14 md:px-6 md:py-20">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background/94" />
+        <div className="relative mx-auto w-full max-w-7xl px-5 pb-6 pt-24 md:px-6 md:pb-12">
           <Breadcrumbs
-            className="text-white/72"
+            className="text-foreground/62"
             items={[
               { label: "Home", href: "/" },
               { label: "Packages", href: "/kashmir-tour-packages" },
               { label: item.title, href: `/kashmir-tour-packages/${item.slug}` },
             ]}
           />
-          <p className="mt-6 inline-flex items-center gap-2 rounded-full bg-white/14 px-3 py-1 text-sm font-bold shadow-sm backdrop-blur">
+          <p className="mt-6 inline-flex items-center gap-2 rounded-full bg-secondary/15 px-3 py-1 text-sm font-bold text-secondary shadow-sm backdrop-blur">
             <Heart size={16} /> {category}
           </p>
-          <h1 className="mt-5 max-w-4xl text-4xl font-black tracking-normal md:text-6xl">
+          <h1 className="mt-5 max-w-4xl text-4xl font-black tracking-normal text-foreground drop-shadow-sm md:text-6xl">
             {item.title}
           </h1>
-          <p className="mt-5 max-w-3xl text-lg leading-8 text-white/84">
+          <p className="mt-5 max-w-3xl text-base leading-7 text-foreground/72 md:text-lg md:leading-8">
             {item.overview}
           </p>
-          <div className="mt-8 flex flex-wrap gap-3 text-sm font-bold">
-            <span className="inline-flex items-center gap-2 rounded-md bg-white/14 px-3 py-2 backdrop-blur">
+          <div className="mt-5 flex flex-wrap gap-4 text-sm font-bold text-foreground/68">
+            <span className="inline-flex items-center gap-1">
               <Star className="fill-accent text-accent" size={17} />
               {rating} rating
             </span>
-            <span className="inline-flex items-center gap-2 rounded-md bg-white/14 px-3 py-2 backdrop-blur">
-              <Clock className="text-accent" size={17} />
+            <span className="inline-flex items-center gap-1">
+              <Clock className="text-foreground/55" size={17} />
               {item.duration}
             </span>
-            <span className="inline-flex items-center gap-2 rounded-md bg-white/14 px-3 py-2 backdrop-blur">
-              <MapPin className="text-accent" size={17} />
+            <span className="inline-flex items-center gap-1">
+              <MapPin className="text-foreground/55" size={17} />
               {item.destination}
             </span>
           </div>
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 pb-14 lg:px-6">
+      <section className="mx-auto max-w-7xl px-5 pb-14 lg:px-6">
         <div className="grid gap-8 lg:grid-cols-[1fr_380px]">
           <div className="grid gap-10 pt-12">
             <section className="grid gap-4 md:grid-cols-3">
@@ -355,8 +355,8 @@ export default async function PackageDetailPage({ params }: Props) {
             ) : null}
           </div>
 
-          <aside className="-mt-8 grid gap-4 self-start lg:sticky lg:top-24">
-            <div className="rounded-lg border border-white/75 bg-white/92 p-5 shadow-xl shadow-brand-dark/10 backdrop-blur">
+          <aside className="order-first -mt-4 grid gap-4 self-start lg:order-none lg:-mt-8 lg:sticky lg:top-24">
+            <div className="rounded-lg border border-white/75 bg-white/78 p-5 shadow-xl shadow-brand-dark/10 backdrop-blur-2xl">
               <p className="inline-flex items-center gap-2 rounded-full bg-accent-soft px-3 py-1 text-xs font-black uppercase text-brand-dark">
                 <Sparkles size={14} /> Customizable package
               </p>
@@ -381,20 +381,20 @@ export default async function PackageDetailPage({ params }: Props) {
               <div className="mt-5 grid gap-2">
                 <a
                   href="#package-quote"
-                  className="inline-flex h-12 items-center justify-center rounded-md bg-accent px-4 text-sm font-black text-foreground shadow-sm"
+                  className="inline-flex h-14 items-center justify-center rounded-lg bg-accent px-4 text-sm font-black text-white shadow-lg shadow-accent/15"
                 >
                   Customize this package
                 </a>
                 <div className="grid grid-cols-2 gap-2">
                   <a
                     href={whatsappUrl(`Hi, I want details for ${item.title}.`)}
-                    className="inline-flex h-11 items-center justify-center gap-2 rounded-md border border-brand/25 text-sm font-black text-brand"
+                    className="inline-flex h-11 items-center justify-center gap-2 rounded-lg border border-brand/25 bg-surface-mid text-sm font-black text-brand"
                   >
                     <MessageCircle size={17} /> WhatsApp
                   </a>
                   <a
                     href={`tel:${config.phone}`}
-                    className="inline-flex h-11 items-center justify-center gap-2 rounded-md border border-brand/25 text-sm font-black text-brand"
+                    className="inline-flex h-11 items-center justify-center gap-2 rounded-lg border border-brand/25 bg-surface-mid text-sm font-black text-brand"
                   >
                     <Phone size={17} /> Call
                   </a>
