@@ -11,8 +11,8 @@ export function Footer() {
           <p className="text-xl font-black">{config.brandName}</p>
           <p className="mt-3 max-w-xl text-sm leading-7 text-white/75">
             Kashmir-focused tour planning for families, couples, groups, and
-            winter travellers. Built around clear itineraries, local guidance,
-            and conversion-friendly SEO pages.
+            winter travellers. Built around clear itineraries, local route
+            guidance, private cab planning, and responsive support.
           </p>
         </div>
         <div>

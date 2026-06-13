@@ -1,8 +1,19 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Check, IndianRupee, MessageCircle, X } from "lucide-react";
+import {
+  Check,
+  Clock,
+  Heart,
+  IndianRupee,
+  MapPin,
+  MessageCircle,
+  Phone,
+  ShieldCheck,
+  Sparkles,
+  Star,
+  X,
+} from "lucide-react";
 import { BlogCard, PackageCard } from "@/components/cards";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { LeadForm } from "@/components/lead-form";
@@ -13,7 +24,7 @@ import {
   getRelatedBlogs,
   getRelatedPackages,
 } from "@/lib/data";
-import { absoluteUrl, whatsappUrl } from "@/lib/config";
+import { absoluteUrl, getSiteConfig, whatsappUrl } from "@/lib/config";
 import {
   JsonLd,
   breadcrumbSchema,
@@ -58,7 +69,18 @@ export default async function PackageDetailPage({ params }: Props) {
     getRelatedPackages(item.relatedPackages),
     getRelatedBlogs(item.relatedBlogs),
   ]);
+  const config = getSiteConfig();
   const hero = item.images[0];
+  const category =
+    typeof item.schemaFields.category === "string"
+      ? item.schemaFields.category
+      : "Kashmir package";
+  const rating = item.reviews.length
+    ? (
+        item.reviews.reduce((total, review) => total + review.rating, 0) /
+        item.reviews.length
+      ).toFixed(1)
+    : "4.8";
 
   return (
     <PublicShell>
@@ -80,170 +102,323 @@ export default async function PackageDetailPage({ params }: Props) {
             fill
             priority
             sizes="100vw"
-            className="object-cover opacity-35"
+            className="object-cover opacity-48"
           />
         ) : null}
+        <div className="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/72 to-brand-dark/25" />
         <div className="relative mx-auto max-w-7xl px-4 py-14 md:px-6 md:py-20">
           <Breadcrumbs
+            className="text-white/72"
             items={[
               { label: "Home", href: "/" },
               { label: "Packages", href: "/kashmir-tour-packages" },
               { label: item.title, href: `/kashmir-tour-packages/${item.slug}` },
             ]}
           />
+          <p className="mt-6 inline-flex items-center gap-2 rounded-full bg-white/14 px-3 py-1 text-sm font-bold shadow-sm backdrop-blur">
+            <Heart size={16} /> {category}
+          </p>
           <h1 className="mt-5 max-w-4xl text-4xl font-black tracking-normal md:text-6xl">
             {item.title}
           </h1>
-          <p className="mt-5 max-w-3xl text-lg leading-8 text-white/82">
+          <p className="mt-5 max-w-3xl text-lg leading-8 text-white/84">
             {item.overview}
           </p>
-          <div className="mt-7 flex flex-wrap gap-3">
-            <span className="rounded-md bg-white/12 px-4 py-2 font-bold">
+          <div className="mt-8 flex flex-wrap gap-3 text-sm font-bold">
+            <span className="inline-flex items-center gap-2 rounded-md bg-white/14 px-3 py-2 backdrop-blur">
+              <Star className="fill-accent text-accent" size={17} />
+              {rating} rating
+            </span>
+            <span className="inline-flex items-center gap-2 rounded-md bg-white/14 px-3 py-2 backdrop-blur">
+              <Clock className="text-accent" size={17} />
               {item.duration}
             </span>
-            <span className="rounded-md bg-accent px-4 py-2 font-black text-foreground">
-              INR {item.price.toLocaleString("en-IN")} {item.priceNote}
+            <span className="inline-flex items-center gap-2 rounded-md bg-white/14 px-3 py-2 backdrop-blur">
+              <MapPin className="text-accent" size={17} />
+              {item.destination}
             </span>
           </div>
         </div>
       </section>
 
-      <section className="mx-auto grid max-w-7xl gap-8 px-4 py-12 lg:grid-cols-[1fr_380px] lg:px-6">
-        <div className="grid gap-10">
-          <section className="rounded-lg border border-line bg-white p-6 shadow-sm">
-            <h2 className="text-2xl font-black text-brand-dark">Package overview</h2>
-            <p className="mt-4 leading-8 text-foreground/70">{item.overview}</p>
-            <div className="mt-6 grid gap-4 md:grid-cols-2">
-              <div className="rounded-lg bg-muted p-4">
-                <p className="text-sm font-bold text-foreground/60">Duration</p>
-                <p className="mt-1 text-xl font-black">{item.duration}</p>
-              </div>
-              <div className="rounded-lg bg-muted p-4">
-                <p className="text-sm font-bold text-foreground/60">Starting price</p>
-                <p className="mt-1 flex items-center text-xl font-black">
-                  <IndianRupee size={18} /> {item.price.toLocaleString("en-IN")}
+      <section className="mx-auto max-w-7xl px-4 pb-14 lg:px-6">
+        <div className="grid gap-8 lg:grid-cols-[1fr_380px]">
+          <div className="grid gap-10 pt-12">
+            <section className="grid gap-4 md:grid-cols-3">
+              <div className="rounded-lg border border-line bg-surface p-5 shadow-sm">
+                <p className="text-sm font-bold text-foreground/60">
+                  Starting price
+                </p>
+                <p className="mt-2 flex items-center text-2xl font-black text-brand-dark">
+                  <IndianRupee size={22} />
+                  {item.price.toLocaleString("en-IN")}
+                </p>
+                <p className="mt-1 text-xs font-bold text-foreground/55">
+                  {item.priceNote || "per person"}
                 </p>
               </div>
-            </div>
-          </section>
+              <div className="rounded-lg border border-line bg-surface p-5 shadow-sm">
+                <p className="text-sm font-bold text-foreground/60">Duration</p>
+                <p className="mt-2 text-2xl font-black text-brand-dark">
+                  {item.duration}
+                </p>
+              </div>
+              <div className="rounded-lg border border-line bg-surface p-5 shadow-sm">
+                <p className="text-sm font-bold text-foreground/60">
+                  Best for
+                </p>
+                <p className="mt-2 text-2xl font-black text-brand-dark">
+                  {category}
+                </p>
+              </div>
+            </section>
 
-          <section>
-            <h2 className="text-2xl font-black text-brand-dark">Day-wise itinerary</h2>
-            <div className="mt-5 grid gap-4">
-              {item.itinerary.map((day) => (
-                <article key={day.day} className="rounded-lg border border-line bg-white p-5 shadow-sm">
-                  <p className="text-sm font-black text-brand">Day {day.day}</p>
-                  <h3 className="mt-1 text-xl font-black text-brand-dark">{day.title}</h3>
-                  <p className="mt-2 leading-7 text-foreground/70">{day.description}</p>
-                </article>
-              ))}
-            </div>
-          </section>
-
-          <section className="grid gap-5 md:grid-cols-2">
-            <div className="rounded-lg border border-line bg-white p-5 shadow-sm">
-              <h2 className="text-xl font-black text-brand-dark">Inclusions</h2>
-              <ul className="mt-4 grid gap-2">
-                {item.inclusions.map((text) => (
-                  <li key={text} className="flex gap-2 text-sm leading-6">
-                    <Check className="mt-1 shrink-0 text-brand" size={16} /> {text}
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className="rounded-lg border border-line bg-white p-5 shadow-sm">
-              <h2 className="text-xl font-black text-brand-dark">Exclusions</h2>
-              <ul className="mt-4 grid gap-2">
-                {item.exclusions.map((text) => (
-                  <li key={text} className="flex gap-2 text-sm leading-6">
-                    <X className="mt-1 shrink-0 text-accent" size={16} /> {text}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </section>
-
-          <section className="rounded-lg border border-line bg-white p-5 shadow-sm">
-            <h2 className="text-2xl font-black text-brand-dark">Hotel and cab details</h2>
-            <p className="mt-4 leading-7 text-foreground/70">{item.hotels}</p>
-            <p className="mt-3 leading-7 text-foreground/70">{item.cabDetails}</p>
-          </section>
-
-          <section>
-            <h2 className="text-2xl font-black text-brand-dark">Gallery</h2>
-            <div className="mt-5 grid gap-4 md:grid-cols-3">
-              {item.images.map((image) => (
-                <Image
-                  key={image.url}
-                  src={image.url}
-                  alt={image.alt}
-                  width={700}
-                  height={520}
-                  className="h-56 rounded-lg object-cover"
-                />
-              ))}
-            </div>
-          </section>
-
-          <section className="grid gap-4">
-            <h2 className="text-2xl font-black text-brand-dark">FAQs</h2>
-            {item.faqs.map((faq) => (
-              <details key={faq.question} className="rounded-lg border border-line bg-white p-5 shadow-sm">
-                <summary className="cursor-pointer font-black text-brand-dark">{faq.question}</summary>
-                <p className="mt-3 leading-7 text-foreground/70">{faq.answer}</p>
-              </details>
-            ))}
-          </section>
-
-          <section>
-            <h2 className="text-2xl font-black text-brand-dark">Reviews</h2>
-            <div className="mt-5 grid gap-4 md:grid-cols-2">
-              {item.reviews.map((review) => (
-                <article key={review.name} className="rounded-lg border border-line bg-white p-5 shadow-sm">
-                  <p className="font-black text-brand-dark">{review.name}</p>
-                  <p className="mt-1 text-sm font-bold text-accent">{review.rating}/5 rating</p>
-                  <p className="mt-3 leading-7 text-foreground/70">{review.text}</p>
-                </article>
-              ))}
-            </div>
-          </section>
-
-          {relatedPackages.length ? (
             <section>
-              <h2 className="text-2xl font-black text-brand-dark">Related packages</h2>
-              <div className="mt-5 grid gap-5 md:grid-cols-2">
-                {relatedPackages.map((related) => (
-                  <PackageCard key={related.slug} item={related} />
+              <p className="text-sm font-black uppercase text-brand">
+                Overview
+              </p>
+              <h2 className="mt-2 text-3xl font-black text-brand-dark">
+                A comfortable Kashmir route with local support
+              </h2>
+              <p className="mt-4 max-w-3xl leading-8 text-foreground/70">
+                {item.overview}
+              </p>
+            </section>
+
+            <section>
+              <p className="text-sm font-black uppercase text-brand">
+                Itinerary
+              </p>
+              <h2 className="mt-2 text-3xl font-black text-brand-dark">
+                Day-wise plan
+              </h2>
+              <div className="mt-6 grid gap-4">
+                {item.itinerary.map((day) => (
+                  <article
+                    key={day.day}
+                    className="rounded-lg border border-line bg-surface p-5 shadow-sm"
+                  >
+                    <div className="flex flex-col gap-3 sm:flex-row sm:items-start">
+                      <span className="inline-flex w-fit rounded-md bg-brand px-3 py-1 text-xs font-black uppercase text-white">
+                        Day {day.day}
+                      </span>
+                      <div>
+                        <h3 className="text-xl font-black text-brand-dark">
+                          {day.title}
+                        </h3>
+                        <p className="mt-2 leading-7 text-foreground/70">
+                          {day.description}
+                        </p>
+                      </div>
+                    </div>
+                  </article>
                 ))}
               </div>
             </section>
-          ) : null}
 
-          {relatedBlogs.length ? (
-            <section>
-              <h2 className="text-2xl font-black text-brand-dark">Related blogs</h2>
-              <div className="mt-5 grid gap-5 md:grid-cols-2">
-                {relatedBlogs.map((blog) => (
-                  <BlogCard key={blog.slug} item={blog} />
-                ))}
+            <section className="grid gap-5 md:grid-cols-2">
+              <div className="rounded-lg border border-line bg-surface p-5 shadow-sm">
+                <h2 className="flex items-center gap-2 text-xl font-black text-brand-dark">
+                  <Check className="text-brand" size={20} /> Inclusions
+                </h2>
+                <ul className="mt-4 grid gap-2">
+                  {item.inclusions.map((text) => (
+                    <li key={text} className="flex gap-2 text-sm leading-6">
+                      <Check className="mt-1 shrink-0 text-brand" size={16} />
+                      {text}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="rounded-lg border border-line bg-surface p-5 shadow-sm">
+                <h2 className="flex items-center gap-2 text-xl font-black text-brand-dark">
+                  <X className="text-rose" size={20} /> Exclusions
+                </h2>
+                <ul className="mt-4 grid gap-2">
+                  {item.exclusions.map((text) => (
+                    <li key={text} className="flex gap-2 text-sm leading-6">
+                      <X className="mt-1 shrink-0 text-rose" size={16} />
+                      {text}
+                    </li>
+                  ))}
+                </ul>
               </div>
             </section>
-          ) : null}
+
+            {item.hotels || item.cabDetails ? (
+              <section className="grid gap-5 md:grid-cols-2">
+                {item.hotels ? (
+                  <div className="rounded-lg border border-line bg-surface p-5 shadow-sm">
+                    <h2 className="text-xl font-black text-brand-dark">
+                      Hotel details
+                    </h2>
+                    <p className="mt-4 leading-7 text-foreground/70">
+                      {item.hotels}
+                    </p>
+                  </div>
+                ) : null}
+                {item.cabDetails ? (
+                  <div className="rounded-lg border border-line bg-surface p-5 shadow-sm">
+                    <h2 className="text-xl font-black text-brand-dark">
+                      Cab details
+                    </h2>
+                    <p className="mt-4 leading-7 text-foreground/70">
+                      {item.cabDetails}
+                    </p>
+                  </div>
+                ) : null}
+              </section>
+            ) : null}
+
+            {item.images.length ? (
+              <section>
+                <h2 className="text-3xl font-black text-brand-dark">Gallery</h2>
+                <div className="mt-5 grid gap-4 md:grid-cols-3">
+                  {item.images.map((image) => (
+                    <Image
+                      key={image.url}
+                      src={image.url}
+                      alt={image.alt}
+                      width={700}
+                      height={520}
+                      className="h-56 w-full rounded-lg object-cover shadow-sm"
+                    />
+                  ))}
+                </div>
+              </section>
+            ) : null}
+
+            <section className="grid gap-4">
+              <h2 className="text-3xl font-black text-brand-dark">FAQs</h2>
+              {item.faqs.map((faq) => (
+                <details
+                  key={faq.question}
+                  className="rounded-lg border border-line bg-surface p-5 shadow-sm"
+                >
+                  <summary className="cursor-pointer font-black text-brand-dark">
+                    {faq.question}
+                  </summary>
+                  <p className="mt-3 leading-7 text-foreground/70">
+                    {faq.answer}
+                  </p>
+                </details>
+              ))}
+            </section>
+
+            {item.reviews.length ? (
+              <section>
+                <h2 className="text-3xl font-black text-brand-dark">Reviews</h2>
+                <div className="mt-5 grid gap-4 md:grid-cols-2">
+                  {item.reviews.map((review) => (
+                    <article
+                      key={review.name}
+                      className="rounded-lg border border-line bg-surface p-5 shadow-sm"
+                    >
+                      <p className="font-black text-brand-dark">{review.name}</p>
+                      <p className="mt-1 inline-flex items-center gap-1 text-sm font-bold text-accent">
+                        <Star className="fill-accent" size={15} />
+                        {review.rating}/5 rating
+                      </p>
+                      <p className="mt-3 leading-7 text-foreground/70">
+                        {review.text}
+                      </p>
+                    </article>
+                  ))}
+                </div>
+              </section>
+            ) : null}
+
+            {relatedPackages.length ? (
+              <section>
+                <h2 className="text-3xl font-black text-brand-dark">
+                  Related packages
+                </h2>
+                <div className="mt-5 grid gap-5 md:grid-cols-2">
+                  {relatedPackages.map((related) => (
+                    <PackageCard key={related.slug} item={related} />
+                  ))}
+                </div>
+              </section>
+            ) : null}
+
+            {relatedBlogs.length ? (
+              <section>
+                <h2 className="text-3xl font-black text-brand-dark">
+                  Related blogs
+                </h2>
+                <div className="mt-5 grid gap-5 md:grid-cols-2">
+                  {relatedBlogs.map((blog) => (
+                    <BlogCard key={blog.slug} item={blog} />
+                  ))}
+                </div>
+              </section>
+            ) : null}
+          </div>
+
+          <aside className="-mt-8 grid gap-4 self-start lg:sticky lg:top-24">
+            <div className="rounded-lg border border-white/75 bg-white/92 p-5 shadow-xl shadow-brand-dark/10 backdrop-blur">
+              <p className="inline-flex items-center gap-2 rounded-full bg-accent-soft px-3 py-1 text-xs font-black uppercase text-brand-dark">
+                <Sparkles size={14} /> Customizable package
+              </p>
+              <div className="mt-5 flex items-end justify-between gap-4">
+                <div>
+                  <p className="text-sm font-bold text-foreground/60">
+                    Starting from
+                  </p>
+                  <p className="mt-1 flex items-center text-3xl font-black text-brand-dark">
+                    <IndianRupee size={25} />
+                    {item.price.toLocaleString("en-IN")}
+                  </p>
+                  <p className="mt-1 text-xs font-bold text-foreground/55">
+                    {item.priceNote || "per person"}
+                  </p>
+                </div>
+                <span className="inline-flex items-center gap-1 rounded-md bg-muted px-2.5 py-1 text-sm font-black text-brand-dark">
+                  <Star className="fill-accent text-accent" size={15} />
+                  {rating}
+                </span>
+              </div>
+              <div className="mt-5 grid gap-2">
+                <a
+                  href="#package-quote"
+                  className="inline-flex h-12 items-center justify-center rounded-md bg-accent px-4 text-sm font-black text-foreground shadow-sm"
+                >
+                  Customize this package
+                </a>
+                <div className="grid grid-cols-2 gap-2">
+                  <a
+                    href={whatsappUrl(`Hi, I want details for ${item.title}.`)}
+                    className="inline-flex h-11 items-center justify-center gap-2 rounded-md border border-brand/25 text-sm font-black text-brand"
+                  >
+                    <MessageCircle size={17} /> WhatsApp
+                  </a>
+                  <a
+                    href={`tel:${config.phone}`}
+                    className="inline-flex h-11 items-center justify-center gap-2 rounded-md border border-brand/25 text-sm font-black text-brand"
+                  >
+                    <Phone size={17} /> Call
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div id="package-quote">
+              <LeadForm
+                sourcePage={absoluteUrl(`/kashmir-tour-packages/${item.slug}`)}
+                leadType="Package Detail"
+                interestedPackage={item.title}
+              />
+            </div>
+            <div className="rounded-lg border border-line bg-surface p-5 text-sm leading-6 text-foreground/68 shadow-sm">
+              <p className="flex items-center gap-2 font-black text-brand-dark">
+                <ShieldCheck size={17} /> Local planner note
+              </p>
+              <p className="mt-2">
+                Final pricing changes with travel month, room category, group
+                size, and cab type. The callback keeps the route practical.
+              </p>
+            </div>
+          </aside>
         </div>
-
-        <aside className="grid gap-4 lg:sticky lg:top-24 lg:self-start">
-          <LeadForm
-            sourcePage={absoluteUrl(`/kashmir-tour-packages/${item.slug}`)}
-            leadType="Package Detail"
-            interestedPackage={item.title}
-          />
-          <Link
-            href={whatsappUrl(`Hi, I want details for ${item.title}.`)}
-            className="inline-flex h-12 items-center justify-center gap-2 rounded-md bg-brand text-sm font-black text-white"
-          >
-            <MessageCircle size={18} /> Ask on WhatsApp
-          </Link>
-        </aside>
       </section>
     </PublicShell>
   );

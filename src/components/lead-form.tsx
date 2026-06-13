@@ -1,7 +1,7 @@
 "use client";
 
 import { useActionState, useEffect, useState } from "react";
-import { Send } from "lucide-react";
+import { Send, Sparkles } from "lucide-react";
 import { createLeadAction, type LeadFormState } from "@/lib/actions";
 
 const initialState: LeadFormState = {
@@ -49,11 +49,16 @@ export function LeadForm({
   }, []);
 
   return (
-    <div className="rounded-lg border border-line bg-white p-5 shadow-sm">
-      <h2 className="text-xl font-black text-brand-dark">Get a Kashmir quote</h2>
-      <p className="mt-2 text-sm leading-6 text-foreground/65">
-        Share your details and a planner will call with route, hotel, cab, and
-        price options.
+    <div className="rounded-lg border border-white/75 bg-white/90 p-5 shadow-xl shadow-brand-dark/8 backdrop-blur">
+      <p className="inline-flex items-center gap-2 rounded-full bg-accent-soft px-3 py-1 text-xs font-black uppercase text-brand-dark">
+        <Sparkles size={14} /> Free planning call
+      </p>
+      <h2 className="mt-4 text-xl font-black text-brand-dark">
+        Get a Kashmir quote
+      </h2>
+      <p className="mt-2 text-sm leading-6 text-foreground/68">
+        Share your dates and group size. A local planner will call with route,
+        hotel, cab, and price options.
       </p>
       <form action={action} className="mt-5 grid gap-3">
         <input type="hidden" name="sourcePage" value={sourcePage} />
@@ -68,11 +73,11 @@ export function LeadForm({
         ))}
         <label className="grid gap-1 text-sm font-semibold">
           Name
-          <input className="admin-input" name="name" required />
+          <input className="admin-input" name="name" autoComplete="name" required />
         </label>
         <label className="grid gap-1 text-sm font-semibold">
           Phone number
-          <input className="admin-input" name="phone" required />
+          <input className="admin-input" name="phone" autoComplete="tel" required />
         </label>
         <div className="grid gap-3 md:grid-cols-2">
           <label className="grid gap-1 text-sm font-semibold">
@@ -91,7 +96,7 @@ export function LeadForm({
         <button
           type="submit"
           disabled={pending}
-          className="inline-flex h-11 items-center justify-center gap-2 rounded-md bg-brand px-4 text-sm font-bold text-white disabled:opacity-60"
+          className="inline-flex h-12 items-center justify-center gap-2 rounded-md bg-brand px-4 text-sm font-black text-white shadow-lg shadow-brand/18 transition hover:bg-brand-dark disabled:opacity-60"
         >
           <Send size={17} />
           {pending ? "Sending..." : "Request callback"}
