@@ -35,7 +35,7 @@ enum BookingStatus {
 
 model SiteSetting {
   id             String   @id @default(cuid())
-  brandName      String   @default("Kashmir Vista Travels")
+  brandName      String   @default("Funzip")
   siteUrl        String   @default("https://example.com")
   phone          String   @default("+91 98765 43210")
   whatsapp       String   @default("+91 98765 43210")
@@ -89,7 +89,7 @@ model BlogPost {
   ogImage         String?
   indexable       Boolean       @default(true)
   featuredImage   String?
-  author          String        @default("Kashmir Vista Editorial Team")
+  author          String        @default("Funzip Editorial Team")
   content         String
   faqs            Json          @default("[]")
   relatedPackages String[]      @default([])

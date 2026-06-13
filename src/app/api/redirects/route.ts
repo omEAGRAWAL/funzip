@@ -8,7 +8,7 @@ export async function GET(request: NextRequest) {
   }
 
   const redirect = await getRedirectForPath(pathname);
-  if (!redirect) return Response.json(null, { status: 404 });
+  if (!redirect) return Response.json(null);
 
   return Response.json({
     target: redirect.target,

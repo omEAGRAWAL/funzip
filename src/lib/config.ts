@@ -2,7 +2,7 @@ export function getSiteConfig() {
   const siteUrl = process.env.SITE_URL || "https://example.com";
 
   return {
-    brandName: process.env.BRAND_NAME || "Kashmir Vista Travels",
+    brandName: process.env.BRAND_NAME || "Funzip",
     siteUrl: siteUrl.replace(/\/$/, ""),
     phone: process.env.BRAND_PHONE || "+91 98765 43210",
     whatsapp: process.env.BRAND_WHATSAPP || "+91 98765 43210",

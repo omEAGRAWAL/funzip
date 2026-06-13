@@ -22,6 +22,10 @@ function runtimeDatabaseUrl() {
     ) {
       parsed.hostname = parsed.hostname.replace(".", "-pooler.");
     }
+    const sslMode = parsed.searchParams.get("sslmode");
+    if (sslMode && ["prefer", "require", "verify-ca"].includes(sslMode)) {
+      parsed.searchParams.set("sslmode", "verify-full");
+    }
     return parsed.toString();
   } catch {
     return url;

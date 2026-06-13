@@ -38,7 +38,7 @@ async function main() {
     update: {},
     create: {
       id: "default",
-      brandName: process.env.BRAND_NAME || "Kashmir Vista Travels",
+      brandName: process.env.BRAND_NAME || "Funzip",
       siteUrl: process.env.SITE_URL || "https://example.com",
       phone: process.env.BRAND_PHONE || "+91 98765 43210",
       whatsapp: process.env.BRAND_WHATSAPP || "+91 98765 43210",

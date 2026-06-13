@@ -3,7 +3,7 @@ import { getSiteConfig } from "@/lib/config";
 import { JsonLd, organizationSchema, pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
-  title: "About Kashmir Vista Travels",
+  title: "About Funzip",
   description:
     "Learn about the Kashmir-focused travel brand, local planning approach, SEO-ready package content, and conversion-first tour operations.",
   path: "/about",

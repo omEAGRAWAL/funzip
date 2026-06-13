@@ -336,7 +336,7 @@ export const seedBlogs: BlogPostItem[] = [
     featuredImage:
       "https://images.unsplash.com/photo-1595815771614-ade9d652a65d",
     indexable: true,
-    author: "Kashmir Vista Editorial Team",
+    author: "Funzip Editorial Team",
     content: `## Quick answer
 The best time to visit Kashmir depends on what you want from the trip. March to April is loved for tulips and spring gardens, May to June works well for family holidays, September to October is calm and scenic, and December to February is the main snow window for Gulmarg.
 
@@ -389,7 +389,7 @@ If this is your first Kashmir trip, choose a route that includes Srinagar, Gulma
     featuredImage:
       "https://images.unsplash.com/photo-1581793746485-04698e79a4e8",
     indexable: true,
-    author: "Kashmir Vista Editorial Team",
+    author: "Funzip Editorial Team",
     content: `## What affects Kashmir trip cost?
 The largest cost drivers are hotel category, travel month, cab size, number of nights, and whether the plan includes Gulmarg or Pahalgam overnight stays.
 

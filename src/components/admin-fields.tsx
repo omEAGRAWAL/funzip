@@ -108,7 +108,7 @@ export function BlogAdminFields({ item }: { item?: BlogPostItem }) {
         <Field label="OG image" name="ogImage" defaultValue={item?.ogImage} />
       </div>
       <Field label="Featured image" name="featuredImage" defaultValue={item?.featuredImage} />
-      <Field label="Author" name="author" defaultValue={item?.author || "Kashmir Vista Editorial Team"} />
+      <Field label="Author" name="author" defaultValue={item?.author || "Funzip Editorial Team"} />
       <TextArea label="Markdown content" name="content" rows={10} defaultValue={item?.content} />
       <TextArea label="FAQs JSON" name="faqs" rows={6} defaultValue={JSON.stringify(item?.faqs ?? [], null, 2)} />
       <TextArea label="Related package slugs" name="relatedPackages" defaultValue={(item?.relatedPackages ?? []).join("\n")} />

@@ -177,7 +177,7 @@ export async function saveBlogAction(formData: FormData) {
     ogImage: nullableStr(formData, "ogImage"),
     indexable: formData.get("indexable") === "on",
     featuredImage: nullableStr(formData, "featuredImage"),
-    author: str(formData, "author") || "Kashmir Vista Editorial Team",
+    author: str(formData, "author") || "Funzip Editorial Team",
     content: str(formData, "content"),
     faqs: inputJson(json(formData, "faqs", [])),
     relatedPackages: list(formData, "relatedPackages"),
