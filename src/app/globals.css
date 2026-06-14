@@ -1,22 +1,24 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f7f9fb;
-  --foreground: #191c1e;
-  --surface: #ffffff;
-  --surface-low: #f2f4f6;
-  --surface-mid: #eceef0;
-  --muted: #f2f4f6;
-  --line: #dfe5ea;
-  --brand: #005d90;
-  --brand-dark: #001d32;
-  --secondary: #2c694e;
-  --accent: #8b4700;
-  --accent-soft: #ffdcc4;
-  --water: #cde5ff;
-  --sky: #0077b6;
-  --rose: #ba1a1a;
-  --snow: #fbfdff;
+  --background: #f4f7f1;
+  --foreground: #17201c;
+  --surface: #fffdf6;
+  --surface-low: #edf2e8;
+  --surface-mid: #e2eadf;
+  --muted: #eef5f6;
+  --line: #d7e0d4;
+  --brand: #0b625d;
+  --brand-dark: #10231f;
+  --secondary: #7b6124;
+  --accent: #c95b2d;
+  --accent-soft: #ffe4cc;
+  --water: #cdebf0;
+  --sky: #246b92;
+  --rose: #9e2f46;
+  --snow: #fbfdf8;
+  --walnut: #6b4a2c;
+  --meadow: #587b3a;
 }
 
 @theme inline {
@@ -36,13 +38,15 @@
   --color-sky: var(--sky);
   --color-rose: var(--rose);
   --color-snow: var(--snow);
+  --color-walnut: var(--walnut);
+  --color-meadow: var(--meadow);
   --font-sans: "Geist", "Geist Fallback", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "Geist Mono", "Geist Mono Fallback", ui-monospace, monospace;
 }
 
 body {
   background:
-    linear-gradient(180deg, var(--snow) 0%, var(--background) 34%, #eef3f7 100%);
+    linear-gradient(180deg, var(--snow) 0%, var(--background) 38%, #e9f1ee 100%);
   color: var(--foreground);
   font-family: var(--font-sans);
 }
@@ -105,4 +109,197 @@ body {
 .hide-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+
+.hero-image {
+  animation: hero-drift 22s ease-in-out infinite alternate;
+  transform-origin: center;
+}
+
+.scroll-reveal,
+.package-card,
+.blog-card,
+.journey-panel {
+  animation: reveal-up 700ms ease both;
+  animation-delay: var(--stagger, 0ms);
+}
+
+.package-card {
+  position: relative;
+}
+
+.package-card::before {
+  background: linear-gradient(90deg, var(--accent), var(--brand), var(--secondary));
+  content: "";
+  height: 3px;
+  inset: 0 0 auto;
+  opacity: 0;
+  position: absolute;
+  transform: scaleX(0.25);
+  transform-origin: left;
+  transition:
+    opacity 220ms ease,
+    transform 420ms ease;
+  z-index: 2;
+}
+
+.package-card:hover::before {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+.package-route-step {
+  transform: translateX(0);
+  transition:
+    background 220ms ease,
+    color 220ms ease,
+    transform 260ms ease;
+}
+
+.package-card:hover .package-route-step {
+  background: rgba(11, 98, 93, 0.1);
+  color: var(--brand-dark);
+  transform: translateX(4px);
+}
+
+.package-card:hover .package-card-image {
+  transform: scale(1.06) rotate(0.35deg);
+}
+
+.package-detail-step {
+  animation: route-step-in 650ms ease both;
+  animation-delay: var(--stagger, 0ms);
+  position: relative;
+}
+
+.package-detail-step::before {
+  animation: route-pulse 1800ms ease-in-out infinite;
+  background: var(--accent);
+  border: 3px solid var(--surface);
+  border-radius: 999px;
+  content: "";
+  height: 16px;
+  left: -8px;
+  position: absolute;
+  top: 28px;
+  width: 16px;
+}
+
+.blog-card {
+  position: relative;
+}
+
+.blog-card::after {
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.68), transparent);
+  content: "";
+  bottom: 0;
+  left: -42%;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  transform: skewX(-16deg);
+  transition:
+    left 700ms ease,
+    opacity 220ms ease;
+  width: 34%;
+  z-index: 3;
+}
+
+.blog-card:hover::after {
+  left: 112%;
+  opacity: 1;
+}
+
+.blog-card:hover .blog-card-image {
+  transform: scale(1.04);
+}
+
+.blog-card:hover .blog-card-rule {
+  width: 100%;
+}
+
+.blog-card-rule {
+  transition: width 360ms ease;
+}
+
+.float-soft {
+  animation: float-soft 6s ease-in-out infinite;
+}
+
+@supports (animation-timeline: view()) {
+  .scroll-reveal,
+  .package-card,
+  .blog-card,
+  .journey-panel {
+    animation-timeline: view();
+    animation-range: entry 0% cover 28%;
+  }
+}
+
+@keyframes hero-drift {
+  from {
+    transform: scale(1);
+  }
+
+  to {
+    transform: scale(1.08) translate3d(-1.5%, 1%, 0);
+  }
+}
+
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes route-step-in {
+  from {
+    opacity: 0;
+    transform: translateX(-18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes route-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(201, 91, 45, 0.28);
+  }
+
+  50% {
+    box-shadow: 0 0 0 8px rgba(201, 91, 45, 0);
+  }
+}
+
+@keyframes float-soft {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 1ms !important;
+  }
 }

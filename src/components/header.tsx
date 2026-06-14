@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Menu, Phone, Search, Send } from "lucide-react";
+import { CalendarDays, Menu, Phone, Send } from "lucide-react";
 import { getSiteConfig, whatsappUrl } from "@/lib/config";
 
 const navItems = [
@@ -14,7 +14,7 @@ export function Header() {
   const config = getSiteConfig();
 
   return (
-    <header className="sticky top-0 z-40 border-b border-white/60 bg-surface/82 shadow-sm backdrop-blur-xl">
+    <header className="sticky top-0 z-40 border-b border-white/60 bg-surface/86 shadow-sm backdrop-blur-xl">
       <div className="mx-auto grid max-w-7xl grid-cols-[44px_1fr_44px] items-center gap-3 px-5 py-4 md:grid-cols-[1fr_auto_1fr] md:px-6">
         <div className="flex items-center gap-4">
           <Link
@@ -37,20 +37,20 @@ export function Header() {
             {config.brandName}
           </span>
           <span className="hidden text-xs font-medium text-foreground/60 md:block">
-            Kashmir tours by local planners
+            Kashmir travel planners
           </span>
         </Link>
         <div className="flex items-center justify-self-end gap-2">
           <Link
             href="/contact"
             className="inline-flex h-10 w-10 items-center justify-center rounded-full text-brand transition hover:bg-surface-mid md:hidden"
-            aria-label="Search or contact"
+            aria-label="Plan a trip"
           >
-            <Search size={21} />
+            <CalendarDays size={21} />
           </Link>
           <Link
             href="/contact"
-            className="hidden h-10 items-center rounded-md bg-accent px-4 text-sm font-black text-foreground shadow-sm md:inline-flex"
+            className="hidden h-10 items-center rounded-md bg-accent px-4 text-sm font-black text-white shadow-sm md:inline-flex"
           >
             Plan trip
           </Link>

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, CalendarDays } from "lucide-react";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { PackageCard } from "@/components/cards";
 import { LeadForm } from "@/components/lead-form";
@@ -61,48 +61,51 @@ export default async function BlogDetailPage({ params }: Props) {
         ])}
       />
       <article>
-        <section className="bg-white">
-          <div className="mx-auto max-w-4xl px-4 py-12 md:px-6">
+        <section className="relative overflow-hidden bg-brand-dark text-white">
+          {item.featuredImage ? (
+            <Image
+              src={item.featuredImage}
+              alt={item.title}
+              fill
+              priority
+              sizes="100vw"
+              className="hero-image object-cover opacity-56"
+            />
+          ) : null}
+          <div className="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/76 to-brand-dark/22" />
+          <div className="relative mx-auto max-w-5xl px-5 py-16 md:px-6 md:py-20">
             <Breadcrumbs
+              className="text-white/70"
               items={[
                 { label: "Home", href: "/" },
                 { label: "Blog", href: "/travel-blog" },
                 { label: item.title, href: `/travel-blog/${item.slug}` },
               ]}
             />
-            <h1 className="mt-5 text-4xl font-black tracking-normal text-brand-dark md:text-5xl">
+            <p className="mt-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/14 px-3 py-1 text-sm font-bold shadow-sm backdrop-blur">
+              <CalendarDays size={16} /> Updated{" "}
+              {item.updatedAt.toLocaleDateString("en-IN")}
+            </p>
+            <h1 className="mt-5 text-4xl font-black tracking-normal md:text-6xl">
               {item.title}
             </h1>
-            <p className="mt-4 text-lg leading-8 text-foreground/70">
+            <p className="mt-5 max-w-3xl text-lg leading-8 text-white/80">
               {item.metaDescription}
             </p>
-            <div className="mt-5 flex flex-wrap gap-3 text-sm font-semibold text-foreground/60">
+            <div className="mt-5 flex flex-wrap gap-3 text-sm font-semibold text-white/64">
               <span>{item.author}</span>
-              <span>Updated {item.updatedAt.toLocaleDateString("en-IN")}</span>
             </div>
           </div>
-          {item.featuredImage ? (
-            <div className="mx-auto max-w-6xl px-4 md:px-6">
-              <Image
-                src={item.featuredImage}
-                alt={item.title}
-                width={1400}
-                height={700}
-                priority
-                className="h-[420px] w-full rounded-lg object-cover"
-              />
-            </div>
-          ) : null}
         </section>
 
-        <section className="mx-auto grid max-w-7xl gap-8 px-4 py-12 lg:grid-cols-[1fr_360px] lg:px-6">
+        <section className="mx-auto grid max-w-7xl gap-8 px-5 py-12 lg:grid-cols-[1fr_360px] lg:px-6">
           <div>
             <div
-              className="prose-lite rounded-lg border border-line bg-white p-6 shadow-sm"
+              className="prose-lite blog-card rounded-lg border border-line bg-white p-6 shadow-sm"
               dangerouslySetInnerHTML={{ __html: markdownToHtml(item.content) }}
             />
             {item.internalLinks.length ? (
-              <div className="mt-8 rounded-lg border border-line bg-water p-5">
+              <div className="blog-card mt-8 rounded-lg border border-line bg-water p-5">
                 <h2 className="text-xl font-black text-brand-dark">Useful internal links</h2>
                 <div className="mt-4 grid gap-2">
                   {item.internalLinks.map((link) => (
@@ -116,7 +119,7 @@ export default async function BlogDetailPage({ params }: Props) {
             <section className="mt-8 grid gap-4">
               <h2 className="text-2xl font-black text-brand-dark">FAQs</h2>
               {item.faqs.map((faq) => (
-                <details key={faq.question} className="rounded-lg border border-line bg-white p-5 shadow-sm">
+                <details key={faq.question} className="blog-card rounded-lg border border-line bg-white p-5 shadow-sm">
                   <summary className="cursor-pointer font-black text-brand-dark">{faq.question}</summary>
                   <p className="mt-3 leading-7 text-foreground/70">{faq.answer}</p>
                 </details>
@@ -124,10 +127,10 @@ export default async function BlogDetailPage({ params }: Props) {
             </section>
             {relatedPackages.length ? (
               <section className="mt-8">
-                <h2 className="text-2xl font-black text-brand-dark">Related package CTA</h2>
+                <h2 className="text-2xl font-black text-brand-dark">Related packages</h2>
                 <div className="mt-5 grid gap-5 md:grid-cols-2">
-                  {relatedPackages.map((pkg) => (
-                    <PackageCard key={pkg.slug} item={pkg} />
+                  {relatedPackages.map((pkg, index) => (
+                    <PackageCard key={pkg.slug} item={pkg} index={index} />
                   ))}
                 </div>
               </section>

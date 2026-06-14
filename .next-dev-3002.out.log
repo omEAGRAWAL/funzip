@@ -1,0 +1,69 @@
+
+> funzip@0.1.0 dev
+> next dev --port 3002
+
+▲ Next.js 16.2.9 (Turbopack)
+- Local:         http://localhost:3002
+- Network:       http://192.168.1.9:3002
+- Environments: .env
+✓ Ready in 803ms
+Creating turbopack project { dir: 'C:\\Users\\Om - Gandu\\Downloads\\funzip', testMode: true }
+
+ GET /api/redirects?pathname=%2F 200 in 906ms (next.js: 499ms, application-code: 407ms)
+ GET / 200 in 3.0s (next.js: 530ms, proxy.ts: 1280ms, application-code: 1163ms)
+ GET /api/redirects?pathname=%2F 200 in 17.3s (next.js: 5ms, application-code: 17.2s)
+ GET /api/redirects?pathname=%2F 200 in 23.1s (next.js: 7ms, application-code: 23.1s)
+ GET /api/redirects?pathname=%2F 200 in 372ms (next.js: 4ms, application-code: 368ms)
+ GET / 200 in 3.0s (next.js: 4ms, proxy.ts: 382ms, application-code: 2.6s)
+ GET /api/redirects?pathname=%2F 200 in 24.7s (next.js: 5ms, application-code: 24.7s)
+ GET /api/redirects?pathname=%2F 200 in 5.3s (next.js: 3ms, application-code: 5.3s)
+ GET /api/redirects?pathname=%2F 200 in 18.5s (next.js: 5ms, application-code: 18.5s)
+ GET /api/redirects?pathname=%2F 200 in 3.1s (next.js: 3ms, application-code: 3.1s)
+ GET /api/redirects?pathname=%2F 200 in 359ms (next.js: 3ms, application-code: 356ms)
+ GET /api/redirects?pathname=%2F 200 in 16.4s (next.js: 3ms, application-code: 16.4s)
+ GET / 200 in 3.0s (next.js: 8ms, proxy.ts: 372ms, application-code: 2.6s)
+ GET /api/redirects?pathname=%2F 200 in 333ms (next.js: 2ms, application-code: 331ms)
+ GET / 200 in 1084ms (next.js: 4ms, proxy.ts: 344ms, application-code: 736ms)
+ GET /api/redirects?pathname=%2F 200 in 302ms (next.js: 5ms, application-code: 297ms)
+ GET / 200 in 902ms (next.js: 6ms, proxy.ts: 328ms, application-code: 568ms)
+ GET /api/redirects?pathname=%2F 200 in 33.8s (next.js: 2ms, application-code: 33.8s)
+{"level":"info","message":"page_view_start","requestId":null}
+{"level":"info","message":"page_view_done","ms":489}
+ POST /api/page-view 200 in 704ms (next.js: 187ms, application-code: 516ms)
+ GET /api/redirects?pathname=%2F.well-known%2Fappspecific%2Fcom.chrome.devtools.json 200 in 96ms (next.js: 8ms, application-code: 89ms)
+ GET /api/redirects?pathname=%2F 200 in 2.7s (next.js: 51ms, application-code: 2.7s)
+ GET /api/redirects?pathname=%2F 200 in 2.7s (next.js: 3ms, application-code: 2.7s)
+ GET / 200 in 5.8s (next.js: 12ms, proxy.ts: 2.7s, application-code: 3.1s)
+{"level":"info","message":"page_view_start","requestId":null}
+{"level":"info","message":"page_view_done","ms":307}
+ POST /api/page-view 200 in 324ms (next.js: 6ms, application-code: 318ms)
+ GET /api/redirects?pathname=%2F 200 in 2.8s (next.js: 7ms, application-code: 2.7s)
+ GET / 200 in 9.6s (next.js: 287ms, proxy.ts: 2.8s, application-code: 6.6s)
+{"level":"info","message":"page_view_start","requestId":null}
+{"level":"info","message":"page_view_done","ms":307}
+ POST /api/page-view 200 in 317ms (next.js: 4ms, application-code: 313ms)
+ GET /api/redirects?pathname=%2F 200 in 2.7s (next.js: 3ms, application-code: 2.7s)
+ GET / 200 in 5.5s (next.js: 4ms, proxy.ts: 2.7s, application-code: 2.8s)
+{"level":"info","message":"page_view_start","requestId":null}
+{"level":"info","message":"page_view_done","ms":304}
+ POST /api/page-view 200 in 313ms (next.js: 3ms, application-code: 309ms)
+ GET /api/redirects?pathname=%2F 200 in 308ms (next.js: 3ms, application-code: 305ms)
+ GET / 200 in 1026ms (next.js: 5ms, proxy.ts: 321ms, application-code: 700ms)
+{"level":"info","message":"page_view_start","requestId":null}
+{"level":"info","message":"page_view_done","ms":305}
+ POST /api/page-view 200 in 314ms (next.js: 2ms, application-code: 312ms)
+ GET /api/redirects?pathname=%2F 200 in 2.6s (next.js: 4ms, application-code: 2.6s)
+ GET / 200 in 5.4s (next.js: 7ms, proxy.ts: 2.6s, application-code: 2.8s)
+{"level":"info","message":"page_view_start","requestId":null}
+{"level":"info","message":"page_view_done","ms":293}
+ POST /api/page-view 200 in 304ms (next.js: 3ms, application-code: 301ms)
+ GET /api/redirects?pathname=%2F 200 in 2.6s (next.js: 7ms, application-code: 2.6s)
+ GET / 200 in 8.5s (next.js: 6ms, proxy.ts: 2.7s, application-code: 5.8s)
+{"level":"info","message":"page_view_start","requestId":null}
+{"level":"info","message":"page_view_done","ms":303}
+ POST /api/page-view 200 in 317ms (next.js: 6ms, application-code: 310ms)
+ GET /api/redirects?pathname=%2F 200 in 315ms (next.js: 6ms, application-code: 310ms)
+ GET / 200 in 2.0s (next.js: 16ms, proxy.ts: 348ms, application-code: 1663ms)
+{"level":"info","message":"page_view_start","requestId":null}
+{"level":"info","message":"page_view_done","ms":314}
+ POST /api/page-view 200 in 521ms (next.js: 189ms, application-code: 332ms)

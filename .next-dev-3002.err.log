@@ -1,0 +1,57 @@
+{"level":"error","message":"Database operation failed","error":"\nInvalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__[\"withDatabase\"])((db)=>db.redirect.findFirst()` invocation in\nC:\\Users\\Om - Gandu\\Downloads\\funzip\\.next\\dev\\server\\chunks\\[root-of-the-server]__0zh2swk._.js:1055:170\n\n  1052     return blogs.filter((item)=>slugs.includes(item.slug));\n  1053 }\n  1054 async function getRedirectForPath(pathname) {\n→ 1055     return (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__[\"withDatabase\"])((db)=>db.redirect.findFirst(\nCan't reach database server at ep-wandering-smoke-adfam7jx-pooler.c-2.us-east-1.aws.neon.tech"}
+{"level":"error","message":"Database operation failed","error":"\nInvalid `(db)=>db.package.findMany()` invocation in\nC:\\Users\\Om - Gandu\\Downloads\\funzip\\.next\\dev\\server\\chunks\\ssr\\[root-of-the-server]__0co9s08._.js:586:185\n\n  583     };\n  584 }\n  585 const getPackages = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__[\"cache\"])(async (includeDrafts = false)=>{\n→ 586     const data = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__[\"withDatabase\"])(async (db)=>db.package.findMany(\nClient network socket disconnected before secure TLS connection was established"}
+{"level":"error","message":"Database operation failed","error":"Authentication timed out"}
+{"level":"error","message":"Database operation failed","error":"Authentication timed out"}
+{"level":"error","message":"Database operation failed","error":"Authentication timed out"}
+{"level":"error","message":"Database operation failed","error":"Connection terminated unexpectedly"}
+[browser] A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <SegmentViewNode type="layout" pagePath="layout.tsx">
+                      <SegmentTrieNode>
+                      <link>
+                      <script>
+                      <script>
+                      <script>
+                      <RootLayout>
+                        <html lang="en" className="geist_a715..." suppressHydrationWarning={true}>
+                          <body
+                            className="min-h-full antialiased"
+-                           data-new-gr-c-s-check-loaded="14.1302.0"
+-                           data-gr-ext-installed=""
+                          >
+                  ...
+ 
+    at <unknown> (file://C:/Users/Om - Gandu/Downloads/funzip/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:3439:25)
+    at runWithFiberInDEV (file://C:/Users/Om - Gandu/Downloads/funzip/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:965:74)
+    at emitPendingHydrationWarnings (file://C:/Users/Om - Gandu/Downloads/funzip/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:3438:13)
+    at completeWork (file://C:/Users/Om - Gandu/Downloads/funzip/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:6885:102)
+    at runWithFiberInDEV (file://C:/Users/Om - Gandu/Downloads/funzip/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:965:131)
+    at completeUnitOfWork (file://C:/Users/Om - Gandu/Downloads/funzip/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:9622:23)
+    at performUnitOfWork (file://C:/Users/Om - Gandu/Downloads/funzip/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:9557:28)
+    at workLoopConcurrentByScheduler (file://C:/Users/Om - Gandu/Downloads/funzip/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:9551:58)
+    at renderRootConcurrent (file://C:/Users/Om - Gandu/Downloads/funzip/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:9534:71)
+    at performWorkOnRoot (file://C:/Users/Om - Gandu/Downloads/funzip/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:9061:150)
+    at performWorkOnRootViaSchedulerTask (file://C:/Users/Om - Gandu/Downloads/funzip/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:10255:9)
+    at MessagePort.performWorkUntilDeadline (file://C:/Users/Om - Gandu/Downloads/funzip/.next/dev/static/chunks/node_modules_next_dist_compiled_1amofcm._.js:2647:64) (file://C:/Users/Om - Gandu/Downloads/funzip/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:3439:25)
+{"level":"error","message":"Database operation failed","error":"\nInvalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__[\"withDatabase\"])((db)=>db.redirect.findFirst()` invocation in\nC:\\Users\\Om - Gandu\\Downloads\\funzip\\.next\\dev\\server\\chunks\\[root-of-the-server]__0zh2swk._.js:1055:170\n\n  1052     return blogs.filter((item)=>slugs.includes(item.slug));\n  1053 }\n  1054 async function getRedirectForPath(pathname) {\n→ 1055     return (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__[\"withDatabase\"])((db)=>db.redirect.findFirst(\nCan't reach database server at ep-wandering-smoke-adfam7jx-pooler.c-2.us-east-1.aws.neon.tech"}

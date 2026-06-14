@@ -1,0 +1,54 @@
+
+> funzip@0.1.0 start
+> next start --port 3001
+
+▲ Next.js 16.2.9
+- Local:         http://localhost:3001
+- Network:       http://192.168.1.9:3001
+✓ Ready in 769ms
+{"level":"info","message":"page_view_start","requestId":null}
+{"level":"info","message":"page_view_done","ms":378}
+{"level":"info","message":"page_view_start","requestId":null}
+{"level":"info","message":"page_view_start","requestId":null}
+{"level":"info","message":"page_view_done","ms":2689}
+{"level":"info","message":"page_view_done","ms":716}
+{"level":"info","message":"page_view_start","requestId":null}
+{"level":"info","message":"page_view_done","ms":333}
+{"level":"info","message":"page_view_start","requestId":null}
+{"level":"info","message":"page_view_done","ms":300}
+{"level":"info","message":"page_view_start","requestId":null}
+{"level":"info","message":"page_view_done","ms":311}
+{"level":"info","message":"page_view_start","requestId":null}
+{"level":"info","message":"page_view_done","ms":295}
+{"level":"info","message":"page_view_start","requestId":null}
+{"level":"info","message":"page_view_done","ms":307}
+{"level":"info","message":"page_view_start","requestId":null}
+{"level":"info","message":"page_view_done","ms":373}
+{"level":"info","message":"page_view_start","requestId":null}
+{"level":"info","message":"page_view_done","ms":315}
+{"level":"info","message":"page_view_start","requestId":null}
+{"level":"info","message":"page_view_done","ms":312}
+{"level":"info","message":"page_view_start","requestId":null}
+{"level":"info","message":"page_view_done","ms":295}
+{"level":"info","message":"page_view_start","requestId":null}
+{"level":"info","message":"page_view_done","ms":295}
+{"level":"info","message":"page_view_start","requestId":null}
+{"level":"info","message":"page_view_done","ms":293}
+{"level":"info","message":"page_view_start","requestId":null}
+{"level":"info","message":"page_view_done","ms":312}
+{"level":"info","message":"page_view_start","requestId":null}
+{"level":"info","message":"page_view_done","ms":298}
+{"level":"info","message":"page_view_start","requestId":null}
+{"level":"info","message":"page_view_done","ms":316}
+{"level":"info","message":"page_view_start","requestId":null}
+{"level":"info","message":"page_view_done","ms":289}
+{"level":"info","message":"page_view_start","requestId":null}
+{"level":"info","message":"page_view_done","ms":310}
+{"level":"info","message":"page_view_start","requestId":null}
+{"level":"info","message":"page_view_done","ms":309}
+{"level":"info","message":"page_view_start","requestId":null}
+{"level":"info","message":"page_view_done","ms":321}
+{"level":"info","message":"page_view_start","requestId":null}
+{"level":"info","message":"page_view_done","ms":312}
+{"level":"info","message":"page_view_start","requestId":null}
+{"level":"info","message":"page_view_done","ms":346}

@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
@@ -102,10 +103,10 @@ export default async function PackageDetailPage({ params }: Props) {
             fill
             priority
             sizes="100vw"
-            className="object-cover"
+            className="hero-image object-cover"
           />
         ) : null}
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background/94" />
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/72 to-brand-dark/18" />
         <div className="relative mx-auto w-full max-w-7xl px-5 pb-6 pt-24 md:px-6 md:pb-12">
           <Breadcrumbs
             className="text-foreground/62"
@@ -145,7 +146,7 @@ export default async function PackageDetailPage({ params }: Props) {
         <div className="grid gap-8 lg:grid-cols-[1fr_380px]">
           <div className="grid gap-10 pt-12">
             <section className="grid gap-4 md:grid-cols-3">
-              <div className="rounded-lg border border-line bg-surface p-5 shadow-sm">
+              <div className="journey-panel rounded-lg border border-line bg-surface p-5 shadow-sm">
                 <p className="text-sm font-bold text-foreground/60">
                   Starting price
                 </p>
@@ -157,13 +158,13 @@ export default async function PackageDetailPage({ params }: Props) {
                   {item.priceNote || "per person"}
                 </p>
               </div>
-              <div className="rounded-lg border border-line bg-surface p-5 shadow-sm">
+              <div className="journey-panel rounded-lg border border-line bg-surface p-5 shadow-sm">
                 <p className="text-sm font-bold text-foreground/60">Duration</p>
                 <p className="mt-2 text-2xl font-black text-brand-dark">
                   {item.duration}
                 </p>
               </div>
-              <div className="rounded-lg border border-line bg-surface p-5 shadow-sm">
+              <div className="journey-panel rounded-lg border border-line bg-surface p-5 shadow-sm">
                 <p className="text-sm font-bold text-foreground/60">
                   Best for
                 </p>
@@ -196,7 +197,8 @@ export default async function PackageDetailPage({ params }: Props) {
                 {item.itinerary.map((day) => (
                   <article
                     key={day.day}
-                    className="rounded-lg border border-line bg-surface p-5 shadow-sm"
+                    className="package-detail-step rounded-lg border border-line bg-surface p-5 shadow-sm"
+                    style={{ "--stagger": `${(day.day - 1) * 90}ms` } as CSSProperties}
                   >
                     <div className="flex flex-col gap-3 sm:flex-row sm:items-start">
                       <span className="inline-flex w-fit rounded-md bg-brand px-3 py-1 text-xs font-black uppercase text-white">
@@ -334,8 +336,8 @@ export default async function PackageDetailPage({ params }: Props) {
                   Related packages
                 </h2>
                 <div className="mt-5 grid gap-5 md:grid-cols-2">
-                  {relatedPackages.map((related) => (
-                    <PackageCard key={related.slug} item={related} />
+                  {relatedPackages.map((related, index) => (
+                    <PackageCard key={related.slug} item={related} index={index} />
                   ))}
                 </div>
               </section>
@@ -347,8 +349,8 @@ export default async function PackageDetailPage({ params }: Props) {
                   Related blogs
                 </h2>
                 <div className="mt-5 grid gap-5 md:grid-cols-2">
-                  {relatedBlogs.map((blog) => (
-                    <BlogCard key={blog.slug} item={blog} />
+                  {relatedBlogs.map((blog, index) => (
+                    <BlogCard key={blog.slug} item={blog} index={index} />
                   ))}
                 </div>
               </section>

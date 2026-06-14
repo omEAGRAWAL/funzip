@@ -1,0 +1,686 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Funzip — Travel UI Demo</title>
+    <meta
+      name="description"
+      content="Responsive Kashmir travel agency UI with package sliders, blog carousel, and customer review cards."
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@400,0&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://images.unsplash.com" />
+    <link rel="preconnect" href="https://lh3.googleusercontent.com" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="cursor-glow" aria-hidden="true"></div>
+
+    <header class="site-header" id="top">
+      <nav class="nav">
+        <a href="#top" class="brand" aria-label="Funzip home">
+          <span class="brand-mark">FZ</span>
+          <span>
+            <strong>Funzip</strong>
+          </span>
+        </a>
+
+        <button
+          class="menu-toggle"
+          aria-label="Open menu"
+          aria-expanded="false"
+        >
+          <span></span><span></span><span></span>
+        </button>
+
+        <div class="nav-links">
+          <a href="#packages">Packages</a>
+          <a href="#reviews">Reviews</a>
+          <a href="#blogs">Blogs</a>
+          <a href="#contact" class="nav-cta">Plan Trip</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section
+        class="splash-hero"
+        aria-label="Heaven Exists, It's Kashmir destination splash"
+      >
+        <img
+          class="splash-bg"
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuCR9Ol8XRz8m6wtzYmsQ898hda1BTEk6rChOWegKuvGLY3DydM1JHBzJaGOxX6leY0KGszs7ibKiXZAlrMq6VqnBTYP1USqY_6U_ZMhQ9ZLWe6RVNznmuZ7F-KYZ8RS2fqpCR4Bivvj_TbrHInT-10LiHk_wviraceHSPDfjMxLAa1McJypjLs_xJn0DDpNjlguJMwI6obhSAqEWYi0Rzk9PX76vqpwATwbUJ0OqqvExaIsB5_wcOx2tZIVUpko4_Tf4z7DZjGepEo"
+          alt="Mountain landscape"
+        />
+        <div class="splash-overlay" aria-hidden="true"></div>
+        <strong class="splash-watermark" aria-hidden="true"
+          >Heaven Exists, <br />It's Kashmir</strong
+        >
+
+        <div class="splash-content">
+          <div class="splash-copy">
+            <div class="splash-badge">
+              <span aria-hidden="true"></span>
+              <small>Welcome to Kashmir</small>
+            </div>
+
+            <h1>Explore beyond Maps<br />With Funzip</h1>
+
+            <div class="splash-actions">
+              <a class="splash-cta" href="#packages">
+                <span>Explore Destination</span>
+                <i aria-hidden="true"></i>
+              </a>
+              <button
+                class="splash-add"
+                type="button"
+                aria-label="Add destination"
+              ></button>
+            </div>
+          </div>
+        </div>
+
+        <!-- <a class="splash-made-badge" href="#" aria-label="Made in Framer">
+        <span class="splash-framer-mark" aria-hidden="true"></span>
+        <span>Made in Framer</span>
+      </a> -->
+      </section>
+
+      <section class="hero section-pad">
+        <div class="hero-bg-orb orb-one"></div>
+        <div class="hero-bg-orb orb-two"></div>
+
+        <div class="hero-copy reveal">
+          <span class="eyebrow"
+            >Kashmir Tourism • Honeymoon • Family • Adventure</span
+          >
+          <h1>Your dream Kashmir trip, now in a premium lavender theme.</h1>
+          <p>
+            Beautiful packages, local planning, handpicked stays and seamless
+            support — all packed inside a calm, premium and mobile-friendly
+            travel experience.
+          </p>
+          <div class="hero-actions">
+            <a class="primary-btn" href="#packages">Explore Packages</a>
+            <a class="secondary-btn" href="#contact">Get Free Quote</a>
+          </div>
+
+          <div class="trust-bar">
+            <div><strong>4.8★</strong><span>Guest rating</span></div>
+            <div><strong>2k+</strong><span>Happy travellers</span></div>
+            <div><strong>24/7</strong><span>Trip support</span></div>
+          </div>
+        </div>
+
+        <div class="hero-visual reveal delay-1">
+          <div class="hero-card main-card">
+            <img
+              src="https://images.unsplash.com/photo-1598091383021-15ddea10925d?auto=format&fit=crop&w=1100&q=80"
+              alt="Kashmir valley travel view"
+            />
+            <div class="floating-badge">
+              <span>Starting from</span>
+              <strong>₹12,999</strong>
+            </div>
+          </div>
+
+          <div class="glass-card route-card">
+            <small>Popular Route</small>
+            <strong>Srinagar → Gulmarg → Pahalgam → Sonmarg</strong>
+            <div class="route-line">
+              <span></span><span></span><span></span><span></span>
+            </div>
+          </div>
+
+          <div class="glass-card weather-card">
+            <span>❄️</span>
+            <div><strong>Snow Season</strong><small>Dec to Mar</small></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="rating-strip reveal">
+        <div>
+          <span>Google</span><strong>4.8/5</strong
+          ><small>Verified Reviews</small>
+        </div>
+        <div>
+          <span>TripAdvisor</span><strong>Excellent</strong
+          ><small>Traveller Choice</small>
+        </div>
+        <div>
+          <span>Local Experts</span><strong>100%</strong
+          ><small>Kashmir-based assistance</small>
+        </div>
+        <div>
+          <span>Safe Travel</span><strong>24/7</strong
+          ><small>Support during trip</small>
+        </div>
+      </section>
+
+      <section class="section-pad package-section" id="packages">
+        <div class="package-section-head reveal">
+          <div class="section-head">
+            <span class="eyebrow">Single Row Sliding Packages</span>
+            <h2>Kashmir packages in a clean swipeable carousel.</h2>
+            <p>
+              Slide through packages in one row. Works with arrows on desktop
+              and smooth horizontal swipe on mobile.
+            </p>
+          </div>
+
+          <div class="package-top-actions">
+            <a class="package-view-all" href="#packages">
+              <span>View All Packages</span>
+              <i aria-hidden="true"></i>
+            </a>
+
+            <div
+              class="package-controls"
+              aria-label="Package carousel controls"
+            >
+              <button
+                class="carousel-arrow left"
+                id="packagePrev"
+                aria-label="Previous packages"
+              >
+                &lsaquo;
+              </button>
+              <button
+                class="carousel-arrow right"
+                id="packageNext"
+                aria-label="Next packages"
+              >
+                &rsaquo;
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="package-carousel-wrap reveal">
+          <div class="package-carousel" id="packageCarousel">
+            <article class="package-card">
+              <div class="package-img">
+                <img
+                  src="https://images.unsplash.com/photo-1609947017136-9daf32a5eb16?auto=format&fit=crop&w=900&q=80"
+                  alt="Srinagar houseboat"
+                />
+              </div>
+              <div class="package-body">
+                <h3>Srinagar Honeymoon Escape</h3>
+                <div class="package-meta">
+                  <div class="package-location">
+                    <span class="material-symbols-outlined" aria-hidden="true"
+                      >location_on</span
+                    >
+                    <span>Srinagar, Kashmir</span>
+                  </div>
+                  <div class="package-details-row">
+                    <span>
+                      <span class="material-symbols-outlined" aria-hidden="true"
+                        >paid</span
+                      >
+                      Start From ₹18,999
+                    </span>
+                    <span>
+                      <span class="material-symbols-outlined" aria-hidden="true"
+                        >calendar_today</span
+                      >
+                      5 Days
+                    </span>
+                  </div>
+                </div>
+                <a class="package-detail-btn" href="#contact"
+                  >View Package Details</a
+                >
+              </div>
+            </article>
+
+            <article class="package-card">
+              <div class="package-img">
+                <img
+                  src="https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?auto=format&fit=crop&w=900&q=80"
+                  alt="Kashmir family tour mountains"
+                />
+              </div>
+              <div class="package-body">
+                <h3>Classic Kashmir Family Tour</h3>
+                <div class="package-meta">
+                  <div class="package-location">
+                    <span class="material-symbols-outlined" aria-hidden="true"
+                      >location_on</span
+                    >
+                    <span>Gulmarg, Kashmir</span>
+                  </div>
+                  <div class="package-details-row">
+                    <span>
+                      <span class="material-symbols-outlined" aria-hidden="true"
+                        >paid</span
+                      >
+                      Start From ₹21,499
+                    </span>
+                    <span>
+                      <span class="material-symbols-outlined" aria-hidden="true"
+                        >calendar_today</span
+                      >
+                      6 Days
+                    </span>
+                  </div>
+                </div>
+                <a class="package-detail-btn" href="#contact"
+                  >View Package Details</a
+                >
+              </div>
+            </article>
+
+            <article class="package-card">
+              <div class="package-img">
+                <img
+                  src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80"
+                  alt="Adventure travel in mountains"
+                />
+              </div>
+              <div class="package-body">
+                <h3>Gulmarg Snow Adventure</h3>
+                <div class="package-meta">
+                  <div class="package-location">
+                    <span class="material-symbols-outlined" aria-hidden="true"
+                      >location_on</span
+                    >
+                    <span>Gulmarg, Kashmir</span>
+                  </div>
+                  <div class="package-details-row">
+                    <span>
+                      <span class="material-symbols-outlined" aria-hidden="true"
+                        >paid</span
+                      >
+                      Start From ₹15,999
+                    </span>
+                    <span>
+                      <span class="material-symbols-outlined" aria-hidden="true"
+                        >calendar_today</span
+                      >
+                      4 Days
+                    </span>
+                  </div>
+                </div>
+                <a class="package-detail-btn" href="#contact"
+                  >View Package Details</a
+                >
+              </div>
+            </article>
+
+            <article class="package-card">
+              <div class="package-img">
+                <img
+                  src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=900&q=80"
+                  alt="Luxury Kashmir valley package"
+                />
+              </div>
+              <div class="package-body">
+                <h3>Luxury Kashmir Retreat</h3>
+                <div class="package-meta">
+                  <div class="package-location">
+                    <span class="material-symbols-outlined" aria-hidden="true"
+                      >location_on</span
+                    >
+                    <span>Pahalgam, Kashmir</span>
+                  </div>
+                  <div class="package-details-row">
+                    <span>
+                      <span class="material-symbols-outlined" aria-hidden="true"
+                        >paid</span
+                      >
+                      Start From ₹34,999
+                    </span>
+                    <span>
+                      <span class="material-symbols-outlined" aria-hidden="true"
+                        >calendar_today</span
+                      >
+                      7 Days
+                    </span>
+                  </div>
+                </div>
+                <a class="package-detail-btn" href="#contact"
+                  >View Package Details</a
+                >
+              </div>
+            </article>
+
+            <article class="package-card">
+              <div class="package-img">
+                <img
+                  src="https://images.unsplash.com/photo-1517760444937-f6397edcbbcd?auto=format&fit=crop&w=900&q=80"
+                  alt="Snowy Kashmir road package"
+                />
+              </div>
+              <div class="package-body">
+                <h3>Sonmarg Alpine Escape</h3>
+                <div class="package-meta">
+                  <div class="package-location">
+                    <span class="material-symbols-outlined" aria-hidden="true"
+                      >location_on</span
+                    >
+                    <span>Sonmarg, Kashmir</span>
+                  </div>
+                  <div class="package-details-row">
+                    <span>
+                      <span class="material-symbols-outlined" aria-hidden="true"
+                        >paid</span
+                      >
+                      Start From ₹17,999
+                    </span>
+                    <span>
+                      <span class="material-symbols-outlined" aria-hidden="true"
+                        >calendar_today</span
+                      >
+                      4 Days
+                    </span>
+                  </div>
+                </div>
+                <a class="package-detail-btn" href="#contact"
+                  >View Package Details</a
+                >
+              </div>
+            </article>
+
+            <article class="package-card">
+              <div class="package-img">
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Shikara_Boats_-_Lifestyle_in_Dal_Lake%2C_Srinagar%2C_Kashmir%2C_India.jpg"
+                  alt="Dal Lake houseboat package"
+                />
+              </div>
+              <div class="package-body">
+                <h3>Dal Lake Houseboat Stay</h3>
+                <div class="package-meta">
+                  <div class="package-location">
+                    <span class="material-symbols-outlined" aria-hidden="true"
+                      >location_on</span
+                    >
+                    <span>Dal Lake, Kashmir</span>
+                  </div>
+                  <div class="package-details-row">
+                    <span>
+                      <span class="material-symbols-outlined" aria-hidden="true"
+                        >paid</span
+                      >
+                      Start From ₹12,999
+                    </span>
+                    <span>
+                      <span class="material-symbols-outlined" aria-hidden="true"
+                        >calendar_today</span
+                      >
+                      3 Days
+                    </span>
+                  </div>
+                </div>
+                <a class="package-detail-btn" href="#contact"
+                  >View Package Details</a
+                >
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-pad reviews-section" id="reviews">
+        <div class="section-head reveal">
+          <span class="eyebrow">Customer Rating Slideshow</span>
+          <h2>Reviews presented in aesthetic star cards.</h2>
+          <p>
+            Auto-sliding testimonial cards with stars, guest names and elegant
+            mobile-friendly layout.
+          </p>
+        </div>
+
+        <div class="reviews-shell reveal">
+          <div class="review-slider" id="reviewSlider">
+            <article class="review-card">
+              <div class="review-stars">★★★★★</div>
+              <p>
+                “Our Kashmir honeymoon was beautifully planned. Hotels, cab,
+                itinerary and support — everything felt premium and
+                stress-free.”
+              </p>
+              <div class="review-meta">
+                <strong>Ritika & Aman</strong>
+                <span>Delhi • Honeymoon Package</span>
+              </div>
+            </article>
+
+            <article class="review-card">
+              <div class="review-stars">★★★★★</div>
+              <p>
+                “The best part was local coordination. We felt safe, guided and
+                genuinely looked after throughout the family trip.”
+              </p>
+              <div class="review-meta">
+                <strong>Farhan Khan</strong>
+                <span>Mumbai • Family Tour</span>
+              </div>
+            </article>
+
+            <article class="review-card">
+              <div class="review-stars">★★★★★</div>
+              <p>
+                “Loved the aesthetic stays and smooth transport. The mobile
+                experience of the website also made package selection very
+                easy.”
+              </p>
+              <div class="review-meta">
+                <strong>Neha Sharma</strong>
+                <span>Bengaluru • Custom Tour</span>
+              </div>
+            </article>
+          </div>
+
+          <div class="review-controls">
+            <button
+              class="review-dot active"
+              aria-label="Review slide 1"
+            ></button>
+            <button class="review-dot" aria-label="Review slide 2"></button>
+            <button class="review-dot" aria-label="Review slide 3"></button>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-pad blog-section" id="blogs">
+        <div class="blog-section-head reveal">
+          <div class="section-head">
+            <span class="eyebrow">Magazine Style Blogs</span>
+            <h2>Stories for elegant Kashmir explorers.</h2>
+            <p>
+              Fresh guides, itineraries and destination notes, arranged in a
+              smooth horizontal blog carousel.
+            </p>
+          </div>
+
+          <div class="blog-top-actions">
+            <a class="blog-view-all" href="#blogs">
+              <span>View All Blogs</span>
+              <i aria-hidden="true"></i>
+            </a>
+
+            <div class="blog-controls" aria-label="Blog carousel controls">
+              <button
+                class="blog-arrow left"
+                id="blogPrev"
+                aria-label="Previous blogs"
+              >
+                &lsaquo;
+              </button>
+              <button
+                class="blog-arrow right"
+                id="blogNext"
+                aria-label="Next blogs"
+              >
+                &rsaquo;
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="blog-carousel-wrap reveal">
+          <div class="blog-carousel" id="blogCarousel">
+            <article class="blog-card blog-reveal">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Shikara_Boats_-_Lifestyle_in_Dal_Lake%2C_Srinagar%2C_Kashmir%2C_India.jpg"
+                alt="Boat ride on Dal Lake"
+              />
+              <span class="blog-tag">Journey</span>
+              <h3>Sophisticated Journeys Through Dal Lake and Old Srinagar</h3>
+            </article>
+
+            <article class="blog-card blog-reveal">
+              <img
+                src="https://images.unsplash.com/photo-1517760444937-f6397edcbbcd?auto=format&fit=crop&w=1100&q=80"
+                alt="Traveller exploring Kashmir mountains"
+              />
+              <span class="blog-tag">Traveling</span>
+              <h3>Exclusive Getaways For Passionate Modern Adventurers</h3>
+            </article>
+
+            <article class="blog-card blog-reveal">
+              <img
+                src="https://images.unsplash.com/photo-1598091383021-15ddea10925d?auto=format&fit=crop&w=1100&q=80"
+                alt="Scenic Kashmir valley destination"
+              />
+              <span class="blog-tag">Destinations</span>
+              <h3>Discover Elegance in Every Destination You Explore</h3>
+            </article>
+
+            <article class="blog-card blog-reveal">
+              <img
+                src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1100&q=80"
+                alt="Luxury Kashmir valley"
+              />
+              <span class="blog-tag">Retreats</span>
+              <h3>Quiet Luxury Retreats Between Meadows and Snow Peaks</h3>
+            </article>
+
+            <article class="blog-card blog-reveal">
+              <img
+                src="https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?auto=format&fit=crop&w=1100&q=80"
+                alt="Family route through Kashmir mountains"
+              />
+              <span class="blog-tag">Itinerary</span>
+              <h3>Family Routes That Keep Kashmir Beautifully Unrushed</h3>
+            </article>
+
+            <article class="blog-card blog-reveal">
+              <img
+                src="https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&w=1200&q=80"
+                alt="Kashmir meadow landscape"
+              />
+              <span class="blog-tag">Guide</span>
+              <h3>Seasonal Notes For Snow, Tulips, Meadows and Lakes</h3>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-pad quote-section" id="contact">
+        <div class="quote-card reveal">
+          <div>
+            <span class="eyebrow">Plan your Kashmir trip</span>
+            <h2>Get a free custom itinerary in minutes.</h2>
+            <p>
+              Tell us your travel month, people count and budget. Our team will
+              suggest the best package for you.
+            </p>
+          </div>
+
+          <form class="lead-form">
+            <input type="text" placeholder="Your name" aria-label="Your name" />
+            <input
+              type="tel"
+              placeholder="Mobile number"
+              aria-label="Mobile number"
+            />
+            <select aria-label="Travel type">
+              <option>Honeymoon Package</option>
+              <option>Family Package</option>
+              <option>Group Package</option>
+              <option>Custom Package</option>
+            </select>
+            <button type="button">Request Callback</button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer" id="footer">
+      <div class="footer-inner">
+        <div class="footer-hero">
+          <h2>Expedition Expertise at Your Service</h2>
+          <a class="footer-cta" href="#contact">
+            <span>Begin Your Journey</span>
+            <i aria-hidden="true"></i>
+          </a>
+        </div>
+
+        <div class="footer-links">
+          <nav aria-label="Footer main pages">
+            <h3>Main Page</h3>
+            <a href="#top">Home</a>
+            <a href="#reviews">About</a>
+            <a href="#packages">Package</a>
+            <a href="#packages">Destination</a>
+            <a href="#contact">Contact</a>
+          </nav>
+
+          <nav aria-label="Social media">
+            <h3>Social Media</h3>
+            <a
+              href="https://www.instagram.com/"
+              target="_blank"
+              rel="noreferrer"
+              >Instagram</a
+            >
+            <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer"
+              >Linkedin</a
+            >
+            <a href="https://www.facebook.com/" target="_blank" rel="noreferrer"
+              >Facebook</a
+            >
+            <a href="https://x.com/" target="_blank" rel="noreferrer">X</a>
+          </nav>
+        </div>
+
+        <div class="footer-bottom">
+          <p>&copy; 2026 Funzip. All Rights Reserved.</p>
+          <div>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms & Conditions</a>
+          </div>
+          <a
+            class="footer-credit"
+            href="https://commons.wikimedia.org/wiki/File:Shikara_Boats_-_Lifestyle_in_Dal_Lake,_Srinagar,_Kashmir,_India.jpg"
+            target="_blank"
+            rel="noreferrer"
+            >Dal Lake photo: Kreativeart / CC BY-SA 4.0</a
+          >
+        </div>
+
+        <strong class="footer-watermark" aria-hidden="true">FUNZIP</strong>
+      </div>
+    </footer>
+
+    <div class="floating-actions" aria-label="Quick contact actions">
+      <a
+        class="whatsapp"
+        href="https://wa.me/910000000000"
+        aria-label="Chat on WhatsApp"
+        >WA</a
+      >
+      <a class="call" href="tel:+910000000000" aria-label="Call now">Call</a>
+    </div>
+
+    <script src="./script.js"></script>
+  </body>
+</html>

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { notFound } from "next/navigation";
-import { Download } from "lucide-react";
+import { CheckCircle2, Download } from "lucide-react";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { LeadForm } from "@/components/lead-form";
 import { PublicShell } from "@/components/layout-shell";
@@ -52,31 +53,60 @@ export default async function ItineraryPage({ params }: Props) {
           { name: item.title, url: absoluteUrl(`/free-kashmir-itinerary/${item.slug}`) },
         ])}
       />
-      <section className="bg-water">
-        <div className="mx-auto grid max-w-7xl gap-8 px-4 py-14 lg:grid-cols-[1fr_380px] lg:px-6">
-          <div>
+      <section className="relative overflow-hidden bg-brand-dark text-white">
+        {item.ogImage ? (
+          <Image
+            src={item.ogImage}
+            alt={item.title}
+            fill
+            priority
+            sizes="100vw"
+            className="hero-image object-cover opacity-55"
+          />
+        ) : null}
+        <div className="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/74 to-brand-dark/24" />
+        <div className="relative mx-auto max-w-7xl px-5 py-16 md:px-6 md:py-20">
+          <Breadcrumbs
+            className="text-white/70"
+            items={[
+              { label: "Home", href: "/" },
+              { label: item.title, href: `/free-kashmir-itinerary/${item.slug}` },
+            ]}
+          />
+          <p className="mt-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/14 px-3 py-1 text-sm font-bold shadow-sm backdrop-blur">
+            <Download size={16} /> Free Kashmir itinerary
+          </p>
+          <h1 className="mt-4 max-w-4xl text-4xl font-black tracking-normal md:text-6xl">
+            {item.title}
+          </h1>
+          <p className="mt-5 max-w-3xl text-lg leading-8 text-white/78">
+            {item.description}
+          </p>
+        </div>
+      </section>
+      <section className="bg-water/70">
+        <div className="mx-auto grid max-w-7xl gap-8 px-5 py-14 lg:grid-cols-[1fr_380px] lg:px-6">
+          <div className="scroll-reveal">
             <Breadcrumbs
               items={[
                 { label: "Home", href: "/" },
                 { label: item.title, href: `/free-kashmir-itinerary/${item.slug}` },
               ]}
             />
-            <p className="mt-5 inline-flex items-center gap-2 rounded-full bg-white px-3 py-1 text-sm font-bold text-brand">
-              <Download size={16} /> Free gated itinerary
-            </p>
-            <h1 className="mt-4 text-4xl font-black tracking-normal text-brand-dark md:text-5xl">
-              {item.title}
-            </h1>
-            <p className="mt-5 max-w-3xl text-lg leading-8 text-foreground/70">
-              {item.description}
-            </p>
             <div className="mt-8 rounded-lg border border-line bg-white p-5 shadow-sm">
               <h2 className="text-2xl font-black text-brand-dark">What is inside?</h2>
               <ul className="mt-4 grid gap-3 text-foreground/70">
-                <li>Day-wise route for {item.destination}</li>
-                <li>Suggested stay pattern and transfer notes</li>
-                <li>Lead-friendly PDF delivery after form submission</li>
-                <li>Admin-managed SEO title, metadata, FAQs, and index control</li>
+                {[
+                  `Day-wise route for ${item.destination}`,
+                  "Suggested stay pattern and transfer notes",
+                  "Sightseeing flow that avoids rushed travel days",
+                  "Planning prompts for hotels, cabs, meals, and seasonal choices",
+                ].map((text) => (
+                  <li key={text} className="flex gap-2">
+                    <CheckCircle2 className="mt-0.5 shrink-0 text-brand" size={18} />
+                    <span>{text}</span>
+                  </li>
+                ))}
               </ul>
             </div>
             <section className="mt-8 grid gap-4">
