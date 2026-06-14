@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
+import { CalendarDays, IndianRupee, MapPin } from "lucide-react";
 import { HomeLeadForm } from "@/components/home-lead-form";
 import { HomeMotion } from "@/components/home-motion";
 import { absoluteUrl, getSiteConfig, whatsappUrl } from "@/lib/config";
@@ -23,6 +24,11 @@ function formatPrice(price: number) {
 function starsFor(rating: number) {
   const fullStars = Math.max(1, Math.min(5, Math.round(rating)));
   return `${"★".repeat(fullStars)}${"☆".repeat(5 - fullStars)}`;
+}
+
+function compactDuration(duration: string) {
+  const days = duration.match(/(\d+)\s*days?/i);
+  return days ? `${days[1]} Days` : duration;
 }
 
 function firstPackageImage(
@@ -327,32 +333,17 @@ export default async function Home() {
                         <h3>{item.title}</h3>
                         <div className="package-meta">
                           <div className="package-location">
-                            <span
-                              className="material-symbols-outlined"
-                              aria-hidden="true"
-                            >
-                              location_on
-                            </span>
+                            <MapPin size={15} aria-hidden="true" />
                             <span>{item.destination}</span>
                           </div>
                           <div className="package-details-row">
                             <span>
-                              <span
-                                className="material-symbols-outlined"
-                                aria-hidden="true"
-                              >
-                                paid
-                              </span>
+                              <IndianRupee size={15} aria-hidden="true" />
                               Start From {formatPrice(item.price)}
                             </span>
                             <span>
-                              <span
-                                className="material-symbols-outlined"
-                                aria-hidden="true"
-                              >
-                                calendar_today
-                              </span>
-                              {item.duration}
+                              <CalendarDays size={15} aria-hidden="true" />
+                              {compactDuration(item.duration)}
                             </span>
                           </div>
                         </div>
